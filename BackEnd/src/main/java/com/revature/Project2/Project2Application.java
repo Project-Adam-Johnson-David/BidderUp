@@ -25,16 +25,11 @@ public class Project2Application {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) throws Exception {
 		return args -> {
-<<<<<<< HEAD:src/main/java/com/revature/Project2/Project2Application.java
 
 			System.out.println("Let's inspect the beans provided by Spring Boot:");
 
 			//Tells me that the Mongo has mad a connection to the test db
 			System.out.println("---------->" + mongo.getCollectionNames());//returns test collection
-=======
-//
-//			System.out.println("Let's inspect the beans provided by Spring Boot:");
->>>>>>> 87e9d523e72265df514e1cfa63657e3354900df5:BackEnd/src/main/java/com/revature/Project2/Project2Application.java
 		};
 	}
 
