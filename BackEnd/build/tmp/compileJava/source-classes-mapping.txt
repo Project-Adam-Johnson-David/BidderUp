@@ -1,26 +1,14 @@
 com/revature/Project2/ControllerConfig.java
  com.revature.Project2.ControllerConfig
-<<<<<<< HEAD
 com/revature/Project2/service/UserService.java
  com.revature.Project2.service.UserService
 com/revature/Project2/repository/UserRepository.java
  com.revature.Project2.repository.UserRepository
-=======
-com/revature/Project2/repository/UserRepository.java
- com.revature.Project2.repository.UserRepository
-com/revature/Project2/service/UserService.java
- com.revature.Project2.service.UserService
->>>>>>> 99401189839d8f0b07b43360ae05c38b7aac7f96
 com/revature/Project2/pojo/User.java
  com.revature.Project2.pojo.User
 com/revature/Project2/controller/UserController.java
  com.revature.Project2.controller.UserController
-<<<<<<< HEAD
-=======
 com/revature/Project2/Project2Application.java
  com.revature.Project2.Project2Application
->>>>>>> 99401189839d8f0b07b43360ae05c38b7aac7f96
 com/revature/Project2/controller/MainController.java
  com.revature.Project2.controller.MainController
-com/revature/Project2/Project2Application.java
- com.revature.Project2.Project2Application

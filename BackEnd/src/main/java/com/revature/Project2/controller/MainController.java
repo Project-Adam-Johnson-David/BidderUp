@@ -21,7 +21,7 @@ public class MainController {
         //validate user here
 
         //call service for logging in user
-        System.out.println(user);
+        System.out.println(user.getUsername());
         return "200";
     }
 
