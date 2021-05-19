@@ -17,24 +17,13 @@ public class MainController {
     }
 
     @RequestMapping("/login")
-    public String login(@RequestBody Context data) throws NamingException {
-//        System.out.println("hello from the server");
-//        System.out.println(data);
-//        User user =
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        User user = objectMapper.readValue(data, User.class);
-////        String name= "";
-////        data.bind(name,User.class);
-//        System.out.println(use);
+    public String login(@RequestBody User user) throws NamingException {
+        //validate user here
+
+        //call service for logging in user
+        System.out.println(user);
         return "200";
     }
-
-//    @RequestMapping("/login")
-//    public String login(@RequestParam String username,@RequestParam String password) {
-////        System.out.println("hello from the server");
-//        System.out.println(username +"     "+password);
-//        return "200";
-//    }
 
 
 }

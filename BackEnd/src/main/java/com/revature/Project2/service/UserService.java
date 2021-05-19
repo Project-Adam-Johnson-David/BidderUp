@@ -32,6 +32,7 @@ public class UserService {
      * @return User user
      */
     public User findUser(String username){
+        User user1 = new User();
         User user = userRepo.findUserByUsername(username);
         return user;
     }
