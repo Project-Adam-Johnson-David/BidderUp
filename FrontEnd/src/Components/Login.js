@@ -11,7 +11,7 @@ function Login(){
         console.log(password);
         await axios({
             method: 'post',
-            url: "http://localhost:8080/login",
+            url: "http://localhost:8080/users/user",
             data: { username, password},
             headers : {
                 'Content-Type': 'application/json'

@@ -1,6 +1,14 @@
 com/revature/Project2/ControllerConfig.java
  com.revature.Project2.ControllerConfig
-com/revature/Project2/Project2Application.java
- com.revature.Project2.Project2Application
+com/revature/Project2/service/UserService.java
+ com.revature.Project2.service.UserService
+com/revature/Project2/repository/UserRepository.java
+ com.revature.Project2.repository.UserRepository
+com/revature/Project2/pojo/User.java
+ com.revature.Project2.pojo.User
+com/revature/Project2/controller/UserController.java
+ com.revature.Project2.controller.UserController
 com/revature/Project2/controller/MainController.java
  com.revature.Project2.controller.MainController
+com/revature/Project2/Project2Application.java
+ com.revature.Project2.Project2Application
