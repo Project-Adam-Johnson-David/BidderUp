@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
     //log4j logger
-   // public org.apache.logging.log4j.Logger rootLogger = LogManager.getRootLogger();
+    // public org.apache.logging.log4j.Logger rootLogger = LogManager.getRootLogger();
 
     /**
      * Service method findAllUsers named after the
@@ -32,6 +32,7 @@ public class UserService {
      * @return User user
      */
     public User findUser(String username){
+        User user1 = new User();
         User user = userRepo.findUserByUsername(username);
         return user;
     }

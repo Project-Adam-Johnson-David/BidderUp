@@ -1,8 +1,11 @@
 package com.revature.Project2.controller;//package com.example.springboot;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.Project2.pojo.User;
+import org.springframework.web.bind.annotation.*;
+
+import javax.naming.Context;
+import javax.naming.NamingException;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -14,11 +17,13 @@ public class MainController {
     }
 
     @RequestMapping("/login")
-    public String login() {
-//        System.out.println("hello from the server");
+    public String login(@RequestBody User user) throws NamingException {
+        //validate user here
+
+        //call service for logging in user
+        System.out.println(user.getUsername());
         return "200";
     }
-
 
 
 }

@@ -36,8 +36,8 @@ public class UserController {
         catch (Exception e){
             //System.out.println(e.getMessage());
             e.printStackTrace();
-            list.add(new User(null, "Adam", "password",
-                    "United States", 100));
+//            list.add(new User(null, "Adam", "password",
+//                    "United States", 100));
         }
         return list;
     }
