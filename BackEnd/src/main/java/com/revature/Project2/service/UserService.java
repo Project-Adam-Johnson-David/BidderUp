@@ -36,4 +36,40 @@ public class UserService {
         User user = userRepo.findUserByUsername(username);
         return user;
     }
+
+    /**
+     * Service method verifyLogin named after the
+     * UserRepository method
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    public boolean verifyLogin(String username, String password){
+        boolean flag = false;
+        User usr = userRepo.findUserByUsername(username);
+        if(password.equals(usr.getPassword())){
+            flag = true;
+        }
+        return flag;
+    }
+
+    /**
+     * Add user to the database
+     *
+     * @param user to be added
+     * @return true if success, else otherwise
+     */
+    public boolean addUser(User user) {
+        try{
+            User found = userRepo.findUserByUsername(user.getUsername());
+            if(found==null){
+                userRepo.insert(user);
+                return true;
+            }
+            return false;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }

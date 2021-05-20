@@ -28,18 +28,16 @@
       <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/build/classes/java/main/com/revature/Project2/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/build/classes/java/main/com/revature/Project2/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/build/classes/java/main/com/revature/Project2/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/build/classes/java/main/com/revature/Project2/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/controller/BidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/controller/BidController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/pojo/Bid.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/pojo/Bid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/repository/BidRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/repository/BidRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/service/BidService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/service/BidService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Bids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Bids.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,19 +76,6 @@
     <property name="settings.editor.selected.configurable" value="CodeWithMe" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -105,6 +90,8 @@
       <workItem from="1621448658082" duration="3571000" />
       <workItem from="1621468103714" duration="614000" />
       <workItem from="1621468748108" duration="3070000" />
+      <workItem from="1621484175078" duration="4697000" />
+      <workItem from="1621522118275" duration="4091000" />
     </task>
     <servers />
   </component>

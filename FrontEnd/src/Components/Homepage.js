@@ -5,7 +5,7 @@ import Bids from "./Bids";
 
 function Homepage(props){
     const [currentPage, setCurrentPage] = useState("Homepage");
-
+    // const [username, setUsername] = useState(props.username);
 
     function goHome() {
         setCurrentPage("Homepage");

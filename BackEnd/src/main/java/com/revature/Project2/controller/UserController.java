@@ -3,10 +3,7 @@ package com.revature.Project2.controller;
 import com.revature.Project2.pojo.User;
 import com.revature.Project2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,18 +42,28 @@ public class UserController {
     }
 
 
-    @GetMapping("/login")
-    public List<User> login(){
-        List<User> list = new ArrayList<>();
-//        try{
-//            list = service.findAllUsers();
-//        }
-//        catch (Exception e){
-//            //System.out.println(e.getMessage());
-//            e.printStackTrace();
-////            list.add(new User(null, "Adam", "password",
-////                    "United States", 100));
-//        }
-        return list;
+    @PostMapping("/login")
+    public int login(@RequestBody User user){
+        try{
+            boolean foundUser = service.verifyLogin(user.getUsername(), user.getPassword());
+            if(foundUser==true){
+                return 200;
+            }
+            else{
+                return 400;
+            }
+        }
+        catch (Exception e){
+            return 400;
+        }
     }
+
+    @PostMapping("/signup")
+    public int signup(@RequestBody User user){
+        if(service.addUser(user)){
+            return 200;
+        }
+        return 400;
+    }
+
 }

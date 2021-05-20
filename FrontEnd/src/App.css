@@ -17,12 +17,25 @@ input{
   border: 1px lightgrey solid;
 }
 
+form{
+  height: 100%;
+  width: 20%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 3rem;
+  display:inline-grid;
+}
+
 .login{
   height: 100%;
   margin-left: 30%;
   margin-right: 30%;
   margin-top: 5%;
-
+  display:inline-grid;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   padding-top: 2rem;
   padding-left: 2rem;
@@ -76,8 +89,6 @@ li{
 .navbar:hover{
   background-color: lightskyblue;
 }
-
-
 
 .bid-section{
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
