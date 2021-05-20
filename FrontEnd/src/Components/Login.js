@@ -25,7 +25,7 @@ function Login(){
         let balance = 4;
         await axios({
             method: 'post',
-            url: "http://localhost:8080/login",
+            url: "http://localhost:8080/user/login",
             data: { username, password, id, country,balance},
             // params:{username, password},
             headers : {

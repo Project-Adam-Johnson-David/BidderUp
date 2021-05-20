@@ -44,7 +44,7 @@ function Homepage(props){
             </div>
             <h3>Welcome {props.username}!</h3>
             <button className="logOut" onClick={props.logOut}>Log out</button>
-            <Bids/>
+            <Bids username={props.username}/>
         </div>
 
     );

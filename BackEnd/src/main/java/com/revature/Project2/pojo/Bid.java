@@ -20,7 +20,7 @@ public class Bid {
     private ObjectId id;
     private String owner;
     private String bidder;
-    private String amount;
+    private long amount;
     @CreatedDate
     private Date date;
 
