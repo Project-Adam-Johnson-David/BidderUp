@@ -104,6 +104,15 @@ li{
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
 }
 
+.browse-section{
+  width: 80%;
+  /*background-color: #3665f3;*/
+  margin:auto;
+  margin-top: 10rem;
+  height: 30rem;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+}
+
 .accept{
   flex: auto;
   background-color: limegreen;

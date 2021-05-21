@@ -2,10 +2,22 @@ import React, {useState} from 'react';
 import axios from "axios";
 import Navbar from "./Navbar";
 import Bids from "./Bids";
+import Browse from "./Browse";
 
 function Homepage(props){
     const [currentPage, setCurrentPage] = useState("Homepage");
-    // const [username, setUsername] = useState(props.username);
+    const [bidsPage, setBidsPage] = useState((localStorage.getItem("bidsPage")=="true")||false);
+
+    React.useEffect(()=>{
+        console.log(bidsPage+"should be saved");
+        localStorage.setItem("bidsPage", bidsPage.toString());
+    },[bidsPage]);
+
+
+
+    function toggleBidPage(){
+        setBidsPage(!bidsPage);
+    }
 
     function goHome() {
         setCurrentPage("Homepage");
@@ -37,17 +49,22 @@ function Homepage(props){
     // else if(currentPage==="ViewBalance"){
     //     // return <div>ViewBalance</div>
     // }
-    return (
-        <div className="homepage">
-            <div>
-                <Navbar goHome={goHome} goAccount={goAccount} goPayments={goPayments} goViewBalance={goViewBalance}/>
-            </div>
-            <h3>Welcome {props.username}!</h3>
-            <button className="logOut" onClick={props.logOut}>Log out</button>
-            <Bids username={props.username}/>
-        </div>
+    if(bidsPage===false&&currentPage==="Homepage"){
+        return (
+            <Browse goHome={goHome} goAccount={goAccount} goPayments={goPayments} goViewBalance={goViewBalance}
+                    username={props.username} toggleBidPage={toggleBidPage} logOut={props.logOut}/>
+        );
 
-    );
+    }
+    else{
+        return (
+            <div className="homepage">
+            <Bids goHome={goHome} goAccount={goAccount} goPayments={goPayments} goViewBalance={goViewBalance}
+                  username={props.username} toggleBidPage={toggleBidPage} logOut={props.logOut}/>
+        </div>);
+
+    }
+
 }
 
 export default Homepage;
