@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Bids from "./Bids";
 import Browse from "./Browse";
+import Account from "./Account";
 
 function Homepage(props){
     const [currentPage, setCurrentPage] = useState("Homepage");
@@ -46,10 +47,10 @@ function Homepage(props){
     // else if(currentPage==="Payments"){
     //     // return <div>Payments</div>
     // }
-    // else if(currentPage==="ViewBalance"){
-    //     // return <div>ViewBalance</div>
-    // }
-    if(bidsPage===false&&currentPage==="Homepage"){
+    if(currentPage==="ViewBalance"){
+        return <Account username={props.username}/>
+    }
+    else if(bidsPage===false&&currentPage==="Homepage"){
         return (
             <Browse goHome={goHome} goAccount={goAccount} goPayments={goPayments} goViewBalance={goViewBalance}
                     username={props.username} toggleBidPage={toggleBidPage} logOut={props.logOut}/>

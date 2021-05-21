@@ -3,8 +3,8 @@ import Navbar from "./Navbar";
 
 function Browse(props){
     const [data, setData] = useState([]);
-
-    function renderData(){
+    // const [query]
+    function searchData(){
 
     }
 
@@ -19,7 +19,6 @@ function Browse(props){
                     <label>Search for items</label>
                     <input type="text" placeholder="filter"/>
                 </div>
-
                 <div className="browse-section-display">
 
                 </div>

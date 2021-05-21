@@ -3,6 +3,8 @@ package com.revature.Project2.controller;
 import com.revature.Project2.pojo.User;
 import com.revature.Project2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -64,6 +66,26 @@ public class UserController {
             return 200;
         }
         return 400;
+    }
+
+    @PostMapping("/deposit")
+    @ResponseBody
+    public void deposit(@RequestParam Integer deposit, @RequestParam String username) {
+        // System.out.println(deposit);
+        // User user = new User()
+        service.depositForUser(deposit, username);
+    }
+
+    @PostMapping("/withdrawal")
+    public ResponseEntity withdraw(@RequestParam Integer withdrawal, @RequestParam String username) {
+        if (service.userCanWithdraw(withdrawal, username)) {
+            service.withdrawForUser(withdrawal, username);
+            return new ResponseEntity<>("Successful Withdraw", HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("Balance can't be below zero",
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
