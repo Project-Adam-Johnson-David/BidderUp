@@ -1,0 +1,131 @@
+body{
+  font-weight: bold;
+}
+
+button{
+  font-size: medium;
+  padding: 0.2rem 1rem;
+  margin: 0.8rem 0.2rem;
+  background-color: #3665f3;
+  color: white;
+  border: none;
+}
+input{
+  padding: 0.2rem 0.2rem;
+  text-decoration: none;
+  margin:0.2rem 0.2rem;
+  border: 1px lightgrey solid;
+}
+
+form{
+  height: 100%;
+  width: 20%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 3rem;
+  display:inline-grid;
+}
+
+.login{
+  height: 100%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  display:inline-grid;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+.login-button{
+  /*float: right;*/
+  margin-right: 10%;
+  margin-top: 5%;
+  font-size: medium;
+  font-weight: bold;
+  background-color: #3665f3;
+  color: white;
+  border: none;
+  padding: 1rem 1rem;
+}
+
+button:hover{
+  background-color: #718be3;
+}
+
+.logOut{
+  float: right;
+}
+
+.bid{
+  padding-left: 1rem;
+  display: grid;
+}
+
+h5{
+  text-align: center;
+}
+
+ul {
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li{
+  display: inline;
+  margin-top: 0px;
+}
+.navbar{
+  /*float: left;*/
+  margin:1rem;
+  background-color: white;
+  color: #3665f3;
+}
+
+.navbar:hover{
+  background-color: lightskyblue;
+}
+
+.bid-section{
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  width: 25%;
+  margin: 10%;
+  max-height: 30rem;
+  overflow: scroll;
+}
+.item-image{
+  max-height: 200px;
+  max-height: 200px;
+  /*border: 1px solid #555;*/
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+}
+
+.browse-section{
+  width: 80%;
+  /*background-color: #3665f3;*/
+  margin:auto;
+  margin-top: 10rem;
+  height: 30rem;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+}
+
+.accept{
+  flex: auto;
+  background-color: limegreen;
+}
+.accept:hover{
+  background-color: darkgreen;
+}
+.deny{
+  background-color:indianred;
+}
+.deny:hover{
+  background-color:darkred;
+}
+select{
+  margin: 1rem 1rem;
+}
