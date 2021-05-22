@@ -13,20 +13,18 @@ function Login(){
     console.log(loggedIn)
 
     React.useEffect(() => {
-        // console.log("code was here");
-        // let username1 = localStorage.getItem("username")
-        // console.log(username1+ "username??");
+        let username1 = localStorage.getItem("username")
+        console.log(username1+ "username??");
         // //currUser
-        // const username1 = localStorage.getItem("username")
-        // // setUsername("")
-        // console.log(username1);
-        // if(username1!==""){
-        //     setUsername(username1)
-        // }
+        setUsername("")
+        if(username1!==""){
+            setUsername(username1)
+            console.log("code was here");
+        }
         //
-        // //logged in status
-        // const loggedStatus = (localStorage.getItem("loggedIn")=== 'true');
-        // setLoggedIn(loggedStatus)
+        // logged in status
+        let loggedStatus = (localStorage.getItem("loggedIn")=== 'true');
+        setLoggedIn(loggedStatus)
     }, [])
 
     React.useEffect(()=>{
