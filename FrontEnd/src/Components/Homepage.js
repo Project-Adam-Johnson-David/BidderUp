@@ -55,10 +55,9 @@ function Homepage(props){
     if(currentPage==="NewItem"){
         return(
             <div>
-                <Navbar goHome={goHome} goAccount={goAccount} goPayments={goPayments}
-                        goViewBalance={goViewBalance} username="{username}" logOut="{logOut}"
-                        goPostNewItem={goViewBalance}/>
-                <PostNewItem/>
+                <PostNewItem goHome={goHome} goAccount={goAccount} goPayments={goPayments} goViewBalance={goViewBalance}
+                             goPostNewItem={goPostNewItem}  username={props.username} toggleBidPage={toggleBidPage}
+                             logOut={props.logOut} username={props.username}/>
             </div> ) ;
 
 
