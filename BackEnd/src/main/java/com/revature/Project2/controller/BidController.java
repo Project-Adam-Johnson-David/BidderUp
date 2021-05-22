@@ -31,6 +31,11 @@ public class BidController {
         return repo.findAll();
     }
 
+    /**
+     * Gets a list of bids by the owner
+     * @param username
+     * @return List<Bid>
+     */
     @GetMapping("/bids/{username}")
     public List<Bid> getBidsById(@PathVariable("username") String username){
         System.out.println(service.findBidByOwner(username));

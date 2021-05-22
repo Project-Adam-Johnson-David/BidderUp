@@ -1,15 +1,22 @@
-import image from '../images.jpeg'
-function Bid(){
+import React, {useEffect} from 'react';
+function Bid(props){
+
+    let owner = props.owner
+    let bidder = props.bidder;
+    let amount = props.amount;
+    let date = props.date;
+
+
+
     return(
 
         <div className="bid">
-            <h6>New York Cosmos Jersey</h6>
-            <div><img className="item-image" src={image}/></div>
+
             <div>
-                <p>Title</p>
-                <p>Price</p>
-                <p>Date submitted</p>
-                <p>Date posted</p>
+                <p>Bidder {bidder}</p>
+                <p>Price {amount}</p>
+                <p>Date submitted {date}</p>
+
             </div>
             <button className="accept">accept</button>
             <button  className="deny">deny</button>
