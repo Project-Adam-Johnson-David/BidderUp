@@ -16,7 +16,7 @@ function Account(props) {
     },[])
 
     async function getBalance() {
-        await axios.post('http://localhost:8080/user/getBalance', null, {params: {username}})
+        await axios.get('http://localhost:8080/user/getBalance', null, {params: {username}})
             .then(response => {
                 const newBalance = response.data;
                 setBalance(newBalance)
@@ -76,7 +76,8 @@ function Account(props) {
         <div>
 
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
-                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
+                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}
+                    goPostNewItem={props.goPostNewItem}/>
             Your current BidderUp Balance is: {balance}
 
             <form onSubmit={submitDeposit}>
