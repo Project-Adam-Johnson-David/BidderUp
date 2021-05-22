@@ -17,6 +17,7 @@ public class User {
     @Id
     private ObjectId id;
     private String username;
+    private String email;
     private String password;
     private String country;
     private long balance;

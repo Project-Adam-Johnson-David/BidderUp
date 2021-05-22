@@ -7,6 +7,7 @@ function Navbar(props){
               <li><button className="navbar"onClick={props.goAccount}>View Account Information</button></li>
               <li><button className="navbar"onClick={props.goPayments}>Payments</button></li>
               <li><button className="navbar"onClick={props.goViewBalance}>View Balance</button></li>
+              <li><button className="navbar"onClick={props.goPostNewItem}>Post New Item</button></li>
               <h3>Welcome {props.username}!</h3>
               <button className="logOut" onClick={props.logOut}>Log out</button>
           </ul>
