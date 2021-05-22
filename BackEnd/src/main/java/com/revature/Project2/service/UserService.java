@@ -73,7 +73,6 @@ public class UserService {
         }
     }
 
-
     public void depositForUser(Integer deposit, String username) {
         User user = userRepo.findUserByUsername(username);
         user.setBalance(user.getBalance()+deposit);
