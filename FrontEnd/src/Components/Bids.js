@@ -75,7 +75,8 @@ function Bids(props){
     return (
         <div >
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
-                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
+                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}
+                    goPostNewItem={props.goPostNewItem}/>
                     <button onClick={props.toggleBidPage}>Browse</button>
             <div className="bid-section">
                 <p>Current bids</p>
