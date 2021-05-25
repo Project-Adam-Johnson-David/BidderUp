@@ -16,31 +16,6 @@ function Bids(props){
     let id = null;
     let owner = "adam";
 
-    async function postNewItem(e){
-        e.preventDefault();
-        await axios({
-            method: 'post',
-            url: "http://localhost:8080/bid/post_bid",
-            data: { owner, bidder, amount, date, id},
-            // params:{username, password},
-            headers : {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            let status = res.data;//data as JSON of all the bids that use is receiving
-            if(status===200){
-                // NotificationManager.success('Successful', 'Successfully Submitted the Reimbursement Request!');
-                console.log("code was here"+res.data);
-                setBids(res.data);
-            }
-            else{
-                // NotificationManager.error('Unsuccessful', 'Sorry, we couldn\'t change your email');
-                console.log("response was not 200"+res.data);
-            }
-        })
-            .catch(err => alert(err));
-
-    }
 
     async function getData(){
         let username= props.username;
@@ -79,7 +54,7 @@ function Bids(props){
                     {/*<button onClick={props.toggleBidPage}>Browse</button>*/}
             <div className="bid-section">
                 <p>Current bids</p>
-                <button onClick={postNewItem}>Post a new item</button>
+                {/*<button onClick={postNewItem}>Post a new item</button>*/}
                 <input type="text" className="filter" placeholder="Filter by name"/>
                 <select>
                     <option value="0">Sort by:</option>

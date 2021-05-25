@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Homepage from './Homepage';
 import Navbar from "./Navbar";
+import {NotificationManager, NotificationContainer} from "react-notifications";
 
 function Account(props) {
     // const [balance, setBalance] = useState(localStorage.getItem("user").balance)
@@ -35,11 +36,11 @@ function Account(props) {
             .then(response => {
                 const newBalance = Number(balance) + Number(deposit)
                 setBalance(newBalance)
-                alert("account deposited into succesfully")
-                //history.push('/EmployeeHome')
+                NotificationManager.success("Successful","Deposit successful");
             })
             .catch(error => {
-                console.log(error)
+                console.log(error);
+                NotificationManager.error("Failed","Failed to deposit");
             })
     };
 
@@ -51,7 +52,8 @@ function Account(props) {
                 console.log(response)
                 const newBalance = Number(balance) - Number(withdrawal)
                 setBalance(newBalance)
-                alert("account withdrawn from succesfully")
+                // alert("account withdrawn from succesfully")
+                NotificationManager.success("Successful","Withdrawn successful");
                 //history.push('/EmployeeHome')
             })
             .catch(error => {
@@ -75,10 +77,10 @@ function Account(props) {
 
     return (
         <div>
+            <NotificationContainer/>
             <div>
             <Navbar></Navbar>
             </div>
-
             <div>
             <h4 className="title">Your current BidderUp Balance is: {balance}</h4>
 
