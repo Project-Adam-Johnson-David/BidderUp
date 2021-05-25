@@ -4,12 +4,14 @@ import Homepage from "./Homepage";
 import Signup from "./Signup";
 import 'react-notifications/lib/notifications.css';
 import {NotificationManager, NotificationContainer} from "react-notifications";
+import {useHistory} from 'react-router-dom'
 
-function Login(){
+function TestLogin(props){
     const [username, setUsername]= useState(localStorage.getItem("username") || "");
     const [password, setPassword]= useState("");
     const [loggedIn, setLoggedIn]= useState(localStorage.getItem("loggedIn")||false);
     const [page, setPage]=useState("login");
+    const history = useHistory() 
     console.log(loggedIn)
 
     React.useEffect(() => {
@@ -35,14 +37,11 @@ function Login(){
     },[loggedIn, username]);
 
     function logOut(){
+        console.log("code was here at logout");
         console.log("logged in was set false here");
         localStorage.setItem("loggedIn","false");
         setLoggedIn(false);
         setUsername("");
-    }
-
-    function changePage(){
-        setPage("signup")
     }
 
     async function submitForm(e){
@@ -66,6 +65,9 @@ function Login(){
             if(status===200){
                 NotificationManager.success('Successful', 'Successfully logged in!');
                 setLoggedIn(true);
+                localStorage.setItem("username", username);
+                sessionStorage.setItem("username", username);
+                history.push('/HomePage', {username: username}, logOut)
                 console.log(res.status);
             }
             else{
@@ -76,42 +78,27 @@ function Login(){
             .catch(err => alert(err));
     }
 
-    if(loggedIn===true){
-        // console.log(loggedIn)
-        return (
-            <div>
-                <NotificationContainer/>
-                <Homepage username={username} logOut={logOut}/>
-            </div>
-        );
+    function changePage(){
+        history.push('Signup')
     }
-    else{
-        if(page==="login"){
-            return (
-                <div>
-                    <NotificationContainer/>
-                    <form onSubmit={submitForm}>
-                        <p>Login</p>
-                        <input type="text" onChange={e=>{setUsername(e.target.value)}} placeholder="Username"/>
-                        <br/>
-                        <input type="password" onChange={e=>{setPassword(e.target.value)}} placeholder="Password"/>
-                        <br/>
-                        <button>Login</button>
-                        <br/>
-                        <p>Don't have an account?</p>
-                        <button onClick={changePage}>Sign up here!</button>
-                    </form>
-                </div>
-            )}
-            else{
-                return(
-                    <div>
-                        <Signup setPage={setPage} />
-                    </div>
-                );
-            }
-        }
+    
+    return (
+        <div>
+            <NotificationContainer/>
+            <form onSubmit={submitForm}>
+                <p>Login</p>
+                <input type="text" onChange={e=>{setUsername(e.target.value)}} placeholder="Username"/>
+                <br/>
+                <input type="password" onChange={e=>{setPassword(e.target.value)}} placeholder="Password"/>
+                <br/>
+                <button>Login</button>
+                <br/>
+                <p>Don't have an account?</p>
+                <button onClick={changePage}>Sign up here!</button>
+            </form>
+        </div>
+    )
 
 }
 
-export default Login;
+export default TestLogin;

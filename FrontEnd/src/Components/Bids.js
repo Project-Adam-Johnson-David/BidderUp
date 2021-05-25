@@ -75,15 +75,14 @@ function Bids(props){
     return (
         <div >
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
-                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}
-                    goPostNewItem={props.goPostNewItem}/>
-                    <button onClick={props.toggleBidPage}>Browse</button>
+                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
+                    {/*<button onClick={props.toggleBidPage}>Browse</button>*/}
             <div className="bid-section">
                 <p>Current bids</p>
                 <button onClick={postNewItem}>Post a new item</button>
                 <input type="text" className="filter" placeholder="Filter by name"/>
                 <select>
-                    <option value="0">Select car:</option>
+                    <option value="0">Sort by:</option>
                     <option value="1">Date</option>
                     <option value="2">Price</option>
                 </select>

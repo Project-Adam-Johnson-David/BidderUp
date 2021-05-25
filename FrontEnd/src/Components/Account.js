@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Homepage from './Homepage';
 import Navbar from "./Navbar";
 
 function Account(props) {
@@ -7,25 +8,25 @@ function Account(props) {
     const [balance, setBalance] = useState(0)
     const [deposit, setDeposit] = useState(0)
     const [withdrawal, setWithdrawal] = useState(0)
-    let username = props.username;
-
+    const username = sessionStorage.getItem("username");
 
 
     React.useEffect(()=>{
-        getBalance();
+        getBalance().then(r => console.log(r));
     },[])
 
-    async function getBalance() {
-        await axios.get('http://localhost:8080/user/getBalance', null, {params: {username}})
-            .then(response => {
-                const newBalance = response.data;
-                setBalance(newBalance)
-                alert("account deposited into successfully")
-                //history.push('/EmployeeHome')
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    async function getBalance(){
+        await axios({
+            method: 'get',
+            url: `http://localhost:8080/user/getBalance/${username}`,
+            // params:{username, password},
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            setBalance(res.data);
+        })
+            .catch(err => alert(err));
     }
 
     async function postDeposit() {
@@ -74,11 +75,12 @@ function Account(props) {
 
     return (
         <div>
+            <div>
+            <Navbar></Navbar>
+            </div>
 
-            <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
-                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}
-                    goPostNewItem={props.goPostNewItem}/>
-            Your current BidderUp Balance is: {balance}
+            <div>
+            <h4 className="title">Your current BidderUp Balance is: {balance}</h4>
 
             <form onSubmit={submitDeposit}>
                 <p>Make a Deposit</p>
@@ -90,6 +92,7 @@ function Account(props) {
                 <input type="text" onChange={e => { setWithdrawal(e.target.value) }} placeholder="e.g 100" />
                 <button>Withdraw</button>
             </form>
+            </div>
         </div>
     )
 }
