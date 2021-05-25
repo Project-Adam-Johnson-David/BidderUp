@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -55,6 +56,19 @@ public class ItemController {
     public Item getOwnerItem(@PathVariable("owner") String owner,
                              @PathVariable("title") String title){
         return service.findOwnerItem(owner, title);
+    }
+
+    @GetMapping("/browse/{query}")
+    public ArrayList<Item> browseItems(@PathVariable("query") String query){
+        ArrayList data= new ArrayList();
+        try{
+            data= service.findItems(query);
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return data;
     }
 
 
