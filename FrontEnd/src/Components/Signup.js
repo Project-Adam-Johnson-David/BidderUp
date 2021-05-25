@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {useHistory} from 'react-router-dom'
 
 function Signup(props){
     const [username, setUsername] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     const [country, setCountry] = useState("");
+    const history = useHistory()
 
     function back(){
-        props.setPage("login");
+        history.push('/')
     }
 
     async function submit(e){

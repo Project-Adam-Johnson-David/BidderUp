@@ -11,8 +11,7 @@ function Browse(props){
 
     return(
         <div>
-            <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
-                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
+            <Navbar></Navbar>
             <button onClick={props.toggleBidPage}>Browse</button>
             <div className="browse-section">
                 <div className="filter">
