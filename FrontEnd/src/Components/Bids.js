@@ -1,71 +1,48 @@
 import React, {useState} from 'react';
+import image from '../images.jpeg'
 import axios from "axios";
 import Bid from "./Bid";
 import Navbar from "./Navbar";
 
 function Bids(props){
     const [bids, setBids] = useState([])
-
+    const [items, setItems] = useState([])
+    let username = sessionStorage.getItem("username");
     React.useEffect(()=>{
-        getData();
+        getBids();
+        //getItems();
     },[]);
 
-    let amount = 40;
-    let bidder ="test";
-    let date = "";
-    let id = null;
-    let owner = "adam";
-
-    async function postNewItem(e){
-        e.preventDefault();
-        await axios({
-            method: 'post',
-            url: "http://localhost:8080/bid/post_bid",
-            data: { owner, bidder, amount, date, id},
-            // params:{username, password},
-            headers : {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            let status = res.data;//data as JSON of all the bids that use is receiving
-            if(status===200){
-                // NotificationManager.success('Successful', 'Successfully Submitted the Reimbursement Request!');
-                console.log("code was here"+res.data);
-                setBids(res.data);
-            }
-            else{
-                // NotificationManager.error('Unsuccessful', 'Sorry, we couldn\'t change your email');
-                console.log("response was not 200"+res.data);
-            }
-        })
-            .catch(err => alert(err));
-
-    }
-
-    async function getData(){
-        let username= props.username;
+    async function getBids(){
         await axios({
             method: 'get',
             url: `http://localhost:8080/bid/bids/${username}`,
-            // params:{username, password},
             headers : {
                 'Content-Type': 'application/json'
             }
         }).then(res => {
-            let status = res.data;//data as JSON of all the bids that use is receiving
-
-            if(status===200){
-                // NotificationManager.success('Successful', 'Successfully Submitted the Reimbursement Request!');
-                console.log("code was here"+res.data);
-                console.log(res.status);
-            }
-            else{
-                // NotificationManager.error('Unsuccessful', 'Sorry, we couldn\'t change your email');
-                console.log("response was not 200"+res.data);
-            }
+        console.log(res.data);
+            setBids(res.data);
+           console.log(bids);
         })
             .catch(err => alert(err));
     }
+
+//    async function getItems(){
+//        console.log(username+" is the user name correct here?");
+//        await axios({
+//            method: 'get',
+//            url: `http://localhost:8080/item/owner_items/${username}`,
+//            headers : {
+//                'Content-Type': 'application/json'
+//            }
+//        }).then(response => {
+//            const userItems = response.data;
+//            setItems(userItems);
+//            console.log(items);
+//        })
+//        .catch(error => console.error(error));
+//    }
 
     function changeTab(){
         console.log("code was here");
@@ -78,18 +55,14 @@ function Bids(props){
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
                     {/*<button onClick={props.toggleBidPage}>Browse</button>*/}
             <div className="bid-section">
+            <div><img className="item-image" src={image}/></div>
                 <p>Current bids</p>
-                <button onClick={postNewItem}>Post a new item</button>
                 <input type="text" className="filter" placeholder="Filter by name"/>
                 <select>
-                    <option value="0">Sort by:</option>
-                    <option value="1">Date</option>
-                    <option value="2">Price</option>
+                    <Bid/>
                 </select>
                 <div className="scroll">
-                    <Bid/>
-                    <Bid/>
-                    <Bid/>
+
                 </div>
             </div>
 
