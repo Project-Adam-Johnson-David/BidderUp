@@ -20,11 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d754e451-5fb2-461c-bdcc-8cfd31cf0be2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/6.8.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/repository/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/revature/Project2/service/ItemService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Account.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Bids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Bids.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Browse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Browse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/PostNewItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PostNewItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,27 +59,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,7 +86,10 @@
       <updated>1621660210386</updated>
       <workItem from="1621660213091" duration="279000" />
       <workItem from="1621662195627" duration="45000" />
-      <workItem from="1621703008539" duration="5868000" />
+      <workItem from="1621703008539" duration="10273000" />
+      <workItem from="1621831119456" duration="1594000" />
+      <workItem from="1621892032493" duration="5935000" />
+      <workItem from="1621953366798" duration="7501000" />
     </task>
     <servers />
   </component>
@@ -94,5 +107,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="826" y="410" key="#ESLint" timestamp="1621968964147">
+      <screen x="0" y="25" width="1920" height="978" />
+    </state>
+    <state x="826" y="410" key="#ESLint/-1440.205.1440.875/0.25.1920.978@0.25.1920.978" timestamp="1621968964147" />
   </component>
 </project>
