@@ -21,8 +21,9 @@ function Homepage(props){
 
     return (
         <div>
-        <Navbar logOut={props.logOut}/>
-        <h3 className="welcome">Welcome {username} !</h3>
+            <Navbar logOut={props.logOut}/>
+            <h3 className="welcome">Welcome {username} !</h3>
+            <Browse/>
         </div>
     )
 
