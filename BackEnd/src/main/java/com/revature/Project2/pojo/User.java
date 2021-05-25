@@ -20,7 +20,7 @@ public class User {
     private String email;
     private String password;
     private String country;
-    private long balance;
+    private double balance;
 
 
     /*

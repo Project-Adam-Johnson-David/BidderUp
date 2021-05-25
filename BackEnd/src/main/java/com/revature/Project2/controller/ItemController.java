@@ -1,14 +1,17 @@
 package com.revature.Project2.controller;
 
 import com.revature.Project2.pojo.Item;
+import com.revature.Project2.pojo.User;
 import com.revature.Project2.repository.ItemRepository;
 import com.revature.Project2.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.stream.ImageInputStream;
+import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,6 +22,16 @@ public class ItemController {
     ItemService service;
     @Autowired
     ItemRepository repo;
+
+    @PostMapping("/addItem")
+    public String addItem(@RequestBody Item item) throws IOException {
+        //item
+
+        if(service.insertItem(item)){
+            return "200";
+        }
+        return "error";
+    }
     
     /**
      * Users the ItemService to get a List of
@@ -43,5 +56,7 @@ public class ItemController {
                              @PathVariable("title") String title){
         return service.findOwnerItem(owner, title);
     }
+
+
 
 }

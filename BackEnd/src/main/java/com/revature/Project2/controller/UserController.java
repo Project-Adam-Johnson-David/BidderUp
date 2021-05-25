@@ -68,16 +68,34 @@ public class UserController {
         return 400;
     }
 
+    @GetMapping("/getBalance/{username}")
+    public double getBalance(@PathVariable("username") String username){
+        double balance=0;
+        try{
+            System.out.println("code was here looking for "+ username);
+            balance = service.findBalance(username);
+            return balance;
+        }
+        catch (Exception e){
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+//            list.add(new User(null, "Adam", "password",
+//                    "United States", 100));
+        }
+        System.out.println(balance);
+        return balance;
+    }
+
     @PostMapping("/deposit")
     @ResponseBody
-    public void deposit(@RequestParam Integer deposit, @RequestParam String username) {
+    public void deposit(@RequestParam double deposit, @RequestParam String username) {
         // System.out.println(deposit);
         // User user = new User()
         service.depositForUser(deposit, username);
     }
 
     @PostMapping("/withdrawal")
-    public ResponseEntity withdraw(@RequestParam Integer withdrawal, @RequestParam String username) {
+    public ResponseEntity withdraw(@RequestParam double withdrawal, @RequestParam String username) {
         if (service.userCanWithdraw(withdrawal, username)) {
             service.withdrawForUser(withdrawal, username);
             return new ResponseEntity<>("Successful Withdraw", HttpStatus.OK);

@@ -39,13 +39,6 @@ public class BidController {
 
     @PostMapping(value ="/post_bid")
     public void postBid(Bid bid){
-        bid.setAmount(40);
-        bid.setBidder("test");
-        Date date = new Date();
-        bid.setDate(date);
-        bid.setId(null);
-        bid.setOwner("adam");
-
         repo.insert(bid);
     }
 }

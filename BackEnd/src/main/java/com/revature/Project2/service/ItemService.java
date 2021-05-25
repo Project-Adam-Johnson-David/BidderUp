@@ -12,6 +12,18 @@ public class ItemService {
     @Autowired
     ItemRepository repo;
 
+    public boolean insertItem(Item item){
+        try{
+        repo.insert(item);
+        return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
     /**
      * Users ItemRepository to find all items of an owner
      * @param owner

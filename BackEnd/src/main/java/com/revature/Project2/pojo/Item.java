@@ -16,6 +16,7 @@ public class Item {
     private long price;
     private String owner;
     private int increment;
+    private String image;
 
     /*Thank you Lombok for the getters, setters, constructors, and toString()
     */
