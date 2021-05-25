@@ -1,5 +1,5 @@
 import image from '../images.jpeg'
-function Bid(){
+function Bid(props){
     return(
 
         <div className="bid">

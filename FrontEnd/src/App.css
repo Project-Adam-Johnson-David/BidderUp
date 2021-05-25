@@ -1,5 +1,9 @@
 body{
   font-weight: bold;
+  /*text-align: center;*/
+}
+.title{
+  text-align: center;
 }
 
 button{
@@ -28,6 +32,9 @@ form{
   padding-left: 2rem;
   padding-right: 3rem;
   display:inline-grid;
+}
+label{
+  margin-top: 0.3rem;
 }
 
 .login{
@@ -69,16 +76,37 @@ h5{
   text-align: center;
 }
 
-ul {
-  float: left;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.nav-bar ul {
+  /*float: left;*/
+  /*list-style-type: none;*/
+  text-align: center;
+  margin: 1rem 1rem;
+  padding: 1rem 1rem;
+  background-color: #3665f3;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
-li{
+.nav-bar li{
+
   display: inline;
   margin-top: 0px;
+  margin: 1rem 1rem;
+  padding: 1rem 1rem;
+  text-decoration: none;
 }
+
+
+.nav-bar a{
+  color: white;
+  padding: 0.5rem 1rem;
+  background-color: #3665f3;
+  text-decoration: none;
+  border-radius: 1rem;
+}
+
+.nav-bar a:hover{
+  background-color: #718be3;
+}
+
 .navbar{
   /*float: left;*/
   margin:1rem;
