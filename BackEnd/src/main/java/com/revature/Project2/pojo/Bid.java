@@ -18,6 +18,7 @@ public class Bid {
     //vars
     @Id
     private ObjectId id;
+    private String item;
     private String owner;
     private String bidder;
     private long amount;
