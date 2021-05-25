@@ -73,23 +73,29 @@ public class UserService {
         }
     }
 
-    public void depositForUser(Integer deposit, String username) {
+    public void depositForUser(double deposit, String username) {
         User user = userRepo.findUserByUsername(username);
         user.setBalance(user.getBalance()+deposit);
         userRepo.save(user);
     }
 
-    public void withdrawForUser(Integer withdraw, String username) {
+    public void withdrawForUser(double withdraw, String username) {
         User user = userRepo.findUserByUsername(username);
         user.setBalance(user.getBalance()-withdraw);
         userRepo.save(user);
     }
 
-    public boolean userCanWithdraw(Integer withdrawal, String username) {
+    public boolean userCanWithdraw(double withdrawal, String username) {
         User user = findUser(username);
         if (user.getBalance() - withdrawal < 0)
             return false;
         else
             return true;
+    }
+
+    public double findBalance(String username) {
+        User user= findUser(username);
+        System.out.println(user.getBalance()+"code was here");
+        return user.getBalance();
     }
 }
