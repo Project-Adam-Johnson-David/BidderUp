@@ -4,10 +4,7 @@ import com.revature.Project2.pojo.Item;
 import com.revature.Project2.repository.ItemRepository;
 import com.revature.Project2.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,4 +41,20 @@ public class ItemController {
         return service.findOwnerItem(owner, title);
     }
 
+    /**
+     * Post an Item to the ItemRepository
+     * @param item
+     * @return boolean flag
+     */
+    @PostMapping("/post_item")
+    public boolean postItem(@RequestBody Item item){
+        try{
+            repo.insert(item);
+            return true;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
