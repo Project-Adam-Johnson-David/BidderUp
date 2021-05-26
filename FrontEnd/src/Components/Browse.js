@@ -35,7 +35,7 @@ function Browse(props){
                     {data.map(d=>{
                         return (
                             <Item key={d.id} title={d.title} price={d.price}
-                                  image={d.image} increment={d.increment}/>
+                                  image={d.image} increment={d.increment} id={d.id}/>
                         )
                     })}
                 </div>
