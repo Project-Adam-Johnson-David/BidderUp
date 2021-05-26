@@ -24,13 +24,13 @@ public class ItemController {
     ItemRepository repo;
 
     @PostMapping("/addItem")
-    public String addItem(@RequestBody Item item) throws IOException {
+    public String addItem(@RequestBody Item item) {
         //item
-
-        if(service.insertItem(item)){
-            return "200";
+        String status = "error";
+        if(service.insertItem(item)){//return true
+            status = "200";
         }
-        return "error";
+        return status;
     }
     
     /**
@@ -41,6 +41,7 @@ public class ItemController {
      */
     @GetMapping("/owner_items/{owner}")
     public List<Item> getOwnerItems(@PathVariable("owner") String owner){
+
         return service.findOwnerItems(owner);
     }
 

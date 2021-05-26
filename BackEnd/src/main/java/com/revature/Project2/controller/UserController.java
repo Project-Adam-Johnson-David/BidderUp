@@ -62,10 +62,11 @@ public class UserController {
 
     @PostMapping("/signup")
     public int signup(@RequestBody User user){
+        int status = 400;
         if(service.addUser(user)){
-            return 200;
+            status = 200;
         }
-        return 400;
+        return status;
     }
 
     @GetMapping("/getBalance/{username}")
