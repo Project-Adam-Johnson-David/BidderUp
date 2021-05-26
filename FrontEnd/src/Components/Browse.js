@@ -17,18 +17,19 @@ function Browse(props){
         // await axios.get('https://free.currconv.com/api/v7/convert?q=+conversion+&compact=ultra&apiKey=79bbd7ca2e5ef55990e6')
         await axios.get(url)
         .then(response => {
-            let data = response.data[conversion]
-            var cc = require('currency-codes');
-            console.log(cc.country('United States of America (The)'));
-            console.log(data)
-            setExchangeCoeff(data)
+
+            // let data = response.data[conversion]
+            // var cc = require('currency-codes');
+            // console.log(cc.country('United States of America (The)'));
+            // console.log(data)
+            // setExchangeCoeff(data)
         })
 
         .catch(err => alert(err))
     }
 
     async function searchData(e){
-        convert()
+        convert();
         console.log(query);
         e.preventDefault();
         await axios({
@@ -58,7 +59,7 @@ function Browse(props){
                 <div className="browse-section-display">
                     {data.map(d=>{
                         return (
-                            <Item key={d.id} title={d.title} price={d.price}
+                            <Item key={d.id} title={d.title} price={d.price} owner={d.owner}
                                   image={d.image} increment={d.increment} id={d.id}/>
                         )
                     })}

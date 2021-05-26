@@ -61,16 +61,17 @@ public class UserService {
      * @return true if success, else otherwise
      */
     public boolean addUser(User user) {
+        boolean flag = false;
         try{
             User found = userRepo.findUserByUsername(user.getUsername());
             if(found==null){
                 userRepo.insert(user);
-                return true;
+                flag = true;
             }
-            return false;
         }catch (Exception e){
-            return false;
+            e.printStackTrace();
         }
+        return flag;
     }
 
     public void depositForUser(double deposit, String username) {

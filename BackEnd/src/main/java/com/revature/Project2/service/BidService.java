@@ -37,4 +37,19 @@ public class BidService {
         return list;
     }
 
+    public ArrayList<Bid> findBidByItem(String owner, String item){
+        try {
+            ArrayList<Bid> bids = repo.findBidByItem(item);
+            for(int i = 0; i < bids.size(); i++){
+                if(!owner.equals(bids.get(i).getOwner())){
+                    bids.remove(i);
+                }
+            }
+            return bids;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
