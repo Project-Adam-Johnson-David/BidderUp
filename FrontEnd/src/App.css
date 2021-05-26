@@ -126,19 +126,38 @@ h5{
   overflow: scroll;
 }
 .item-image{
-  max-height: 200px;
-  max-height: 200px;
+  max-height: 10rem;
+  max-width: 10rem;
+  margin: auto;
   /*border: 1px solid #555;*/
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
 }
+.item-display{
+  margin: 1rem 1rem;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  width: 10rem;
+  padding: 2rem 2rem;
+}
+.welcome{
+  text-align: center;
+}
 
 .browse-section{
-  width: 80%;
   /*background-color: #3665f3;*/
-  margin:auto;
-  margin-top: 10rem;
+  margin:1rem 1rem;
+  margin: auto;
+  /*margin-top: 10rem;*/
   height: 30rem;
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+}
+
+.browse-section-display{
+  display: flex;
+}
+
+
+.filter{
+  text-align: center;
 }
 
 .accept{

@@ -18,47 +18,18 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping
-    public String welcomeUser(){
-        return "Welcome to UserController";
-    }
-
-    /**
-     * Get method getUsers()
-     * endpoint '/users'
-     * @return List<User> list
-     */
-    @GetMapping("/users")
-    public List<User> getUsers(){
-        List<User> list = new ArrayList<>();
-        try{
-            list = service.findAllUsers();
-        }
-        catch (Exception e){
-            //System.out.println(e.getMessage());
-            e.printStackTrace();
-//            list.add(new User(null, "Adam", "password",
-//                    "United States", 100));
-        }
-        return list;
-    }
-
-
     @PostMapping("/login")
-    public int login(@RequestBody User user){
-        try{
-            boolean foundUser = service.verifyLogin(user.getUsername(), user.getPassword());
-            if(foundUser==true){
-                return 200;
-            }
-            else{
-                return 400;
-            }
-        }
-        catch (Exception e){
-            return 400;
-        }
+    public int login(@RequestBody User user) {
+        System.out.println(user.getPassword());
+        if (service.verifyLogin(user.getUsername(), user.getPassword()))
+//            return ResponseEntity.ok(service.findUser(user.getUsername()));
+            return 200;
+        else
+//            return new ResponseEntity<>("Invalid login credentials",
+//                    HttpStatus.UNAUTHORIZED);
+        return 400;
     }
+
 
     @PostMapping("/signup")
     public int signup(@RequestBody User user){
@@ -71,27 +42,12 @@ public class UserController {
 
     @GetMapping("/getBalance/{username}")
     public double getBalance(@PathVariable("username") String username){
-        double balance=0;
-        try{
-            System.out.println("code was here looking for "+ username);
-            balance = service.findBalance(username);
-            return balance;
-        }
-        catch (Exception e){
-            //System.out.println(e.getMessage());
-            e.printStackTrace();
-//            list.add(new User(null, "Adam", "password",
-//                    "United States", 100));
-        }
-        System.out.println(balance);
-        return balance;
+        return service.findBalance((username));
     }
 
     @PostMapping("/deposit")
     @ResponseBody
     public void deposit(@RequestParam double deposit, @RequestParam String username) {
-        // System.out.println(deposit);
-        // User user = new User()
         service.depositForUser(deposit, username);
     }
 
@@ -103,7 +59,7 @@ public class UserController {
         }
         else {
             return new ResponseEntity<>("Balance can't be below zero",
-                    HttpStatus.BAD_REQUEST);
+                    HttpStatus.FORBIDDEN);
         }
     }
 

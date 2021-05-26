@@ -41,9 +41,6 @@ public class BidController {
 
     @GetMapping("/bids/{username}")
     public ArrayList<Bid> getBidsById(@PathVariable("username") String username){
-        System.out.println("code was here in the bids ");
-//        System.out.println(service.findBidByOwner(username));
-        System.out.println(username+" que is the username");
         ArrayList result =service.findBidByOwner(username);
         System.out.println(result);
         return result;
@@ -59,5 +56,8 @@ public class BidController {
             e.printStackTrace();
             return false;
         }
+        System.out.println(service.findBidByOwner(username));
+        return service.findBidByOwner(username);
     }
+
 }

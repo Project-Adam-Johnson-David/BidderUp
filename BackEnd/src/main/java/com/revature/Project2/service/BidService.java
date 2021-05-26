@@ -33,8 +33,7 @@ public class BidService {
     }
 
     public ArrayList<Bid> findBidByOwner(String owner){
-        ArrayList list = new ArrayList();
-        list = repo.findBidByOwner(owner);
+        ArrayList<Bid> list = repo.findBidByOwner(owner);
         return list;
     }
 

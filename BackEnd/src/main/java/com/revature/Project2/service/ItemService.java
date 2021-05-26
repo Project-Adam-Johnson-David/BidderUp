@@ -5,6 +5,8 @@ import com.revature.Project2.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -65,5 +67,9 @@ public class ItemService {
         catch(Exception e){
             return null;
         }
+    }
+
+    public ArrayList findItems(String query) {
+        return repo.findByTitle(query);
     }
 }
