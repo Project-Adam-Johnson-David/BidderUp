@@ -13,7 +13,7 @@ public class Item {
     //vars
     private ObjectId id;
     private String title;
-    private long price;
+    private double price;
     private String owner;
     private int increment;
     private String image;

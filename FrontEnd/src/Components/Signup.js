@@ -27,7 +27,7 @@ function Signup(props){
             await axios({
                 method: 'post',
                 url: "http://localhost:8080/user/signup",
-                data: { username, password, id, country,balance},
+                data: { username, password, id, country, balance},
                 // params:{username, password},
                 headers : {
                     'Content-Type': 'application/json'
