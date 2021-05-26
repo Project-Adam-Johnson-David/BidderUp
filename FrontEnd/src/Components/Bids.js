@@ -69,16 +69,20 @@ function Bids(props){
         <div >
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
+                    <div className="sale">
 
-            {items.map(i => {
-                return(
-                <div>
-                    <div><img className="item-image" src={i.image}/></div>
-                    <Bid key={i.id} item={i}/>
-                </div>
+                        {items.map(i => {
+                            return(
+                                <div className="for-sale">
+                                    <h3>{i.title}</h3>
+                                    <div><img className="item-image" src={i.image}/></div>
+                                    <Bid key={i.id} item={i}/>
+                                </div>
 
-                )
-            })}
+                            )
+                        })}
+                    </div>
+
         </div>
     )
 
