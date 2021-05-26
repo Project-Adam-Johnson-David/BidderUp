@@ -112,6 +112,15 @@ h5{
   margin:1rem;
   background-color: white;
   color: #3665f3;
+  position: sticky;
+  top: 0;
+}
+
+.scrolled{
+  position: fixed;
+  top: 0;
+  width: 100% !important;
+  /*display: inline;*/
 }
 
 .navbar:hover{
@@ -127,7 +136,6 @@ h5{
 }
 .item-image{
   max-height: 10rem;
-  max-width: 10rem;
   margin: auto;
   /*border: 1px solid #555;*/
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
@@ -153,6 +161,26 @@ h5{
 
 .browse-section-display{
   display: flex;
+}
+
+.sale{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.for-sale{
+  text-align: center;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  margin: 0.5rem 1rem;
+  padding: 1rem 1rem;
+}
+.bids{
+  max-height: 30rem;
+  overflow: scroll;
+  padding: 1rem 1rem;
+  margin-top: 1rem;
+  text-align: left;
 }
 
 
