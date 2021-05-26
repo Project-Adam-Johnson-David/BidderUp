@@ -5,12 +5,14 @@ import Bid from "./Bid";
 import Navbar from "./Navbar";
 
 function Bids(props){
-    const [bids, setBids] = useState([])
+   const [bids, setBids] = useState([])
     const [items, setItems] = useState([])
+//let bids = [];
+
     let username = sessionStorage.getItem("username");
     React.useEffect(()=>{
-        getBids();
-        //getItems();
+        getBids().then(r => console.log(r));
+        getItems();
     },[]);
 
     async function getBids(){
@@ -21,28 +23,27 @@ function Bids(props){
                 'Content-Type': 'application/json'
             }
         }).then(res => {
-        console.log(res.data);
-            setBids(res.data);
+           setBids(res.data);
+           //bids = res.data;
            console.log(bids);
         })
             .catch(err => alert(err));
     }
 
-//    async function getItems(){
-//        console.log(username+" is the user name correct here?");
-//        await axios({
-//            method: 'get',
-//            url: `http://localhost:8080/item/owner_items/${username}`,
-//            headers : {
-//                'Content-Type': 'application/json'
-//            }
-//        }).then(response => {
-//            const userItems = response.data;
-//            setItems(userItems);
-//            console.log(items);
-//        })
-//        .catch(error => console.error(error));
-//    }
+    async function getItems(){
+        console.log(username+" is the user name correct here?");
+        await axios({
+            method: 'get',
+            url: `http://localhost:8080/item/owner_items/${username}`,
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            setItems(response.data);
+            console.log(items);
+        })
+        .catch(error => console.error(error));
+    }
 
     function changeTab(){
         console.log("code was here");
@@ -58,11 +59,13 @@ function Bids(props){
             <div><img className="item-image" src={image}/></div>
                 <p>Current bids</p>
                 <input type="text" className="filter" placeholder="Filter by name"/>
-                <select>
-                    <Bid/>
-                </select>
-                <div className="scroll">
 
+                <div className="scroll">
+                    {bids.map(d=>{
+                        return (
+                            <Bid key={d.id} bidder={d.bidder} amount={d.amount} date={d.date}/>
+                        )
+                    })}
                 </div>
             </div>
 
