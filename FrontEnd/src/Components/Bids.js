@@ -5,13 +5,15 @@ import Bid from "./Bid";
 import Navbar from "./Navbar";
 
 function Bids(props){
-    let username = sessionStorage.getItem("username");
-    const [bids,setBids] = useState([]);
-    const [items, setItems] = useState([]);
+   const [bids, setBids] = useState([])
+    const [items, setItems] = useState([])
+//let bids = [];
 
-    // React.useEffect(()=>{
-    //     getBids();
-    // },[]);
+    let username = sessionStorage.getItem("username");
+    React.useEffect(()=>{
+        getBids().then(r => console.log(r));
+        getItems();
+    },[]);
 
     async function getBids(){
         await axios({
@@ -21,27 +23,51 @@ function Bids(props){
                 'Content-Type': 'application/json'
             }
         }).then(res => {
-            let response = res.data;
-            setBids(response);
-            console.log(bids);
+           setBids(res.data);
+           //bids = res.data;
+           console.log(bids);
         })
             .catch(err => alert(err));
     }
 
-    function getItems() {
+    async function getItems(){
+        console.log(username+" is the user name correct here?");
+        await axios({
+            method: 'get',
+            url: `http://localhost:8080/item/owner_items/${username}`,
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            setItems(response.data);
+            console.log(items);
+        })
+        .catch(error => console.error(error));
+    }
 
+    function changeTab(){
+        console.log("code was here");
+        props.setTab("Browse");
     }
 
     return (
         <div >
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
-                    <button onClick={event => {event.preventDefault();getBids();getItems()}}>Render me</button>
-                {bids.map(d=>{
-                    return (
-                        <div key={d.id}>{d.title}</div>
-                    )
-                })}
+                    {/*<button onClick={props.toggleBidPage}>Browse</button>*/}
+            <div className="bid-section">
+            <div><img className="item-image" src={image}/></div>
+                <p>Current bids</p>
+                <input type="text" className="filter" placeholder="Filter by name"/>
+
+                <div className="scroll">
+                    {bids.map(d=>{
+                        return (
+                            <Bid key={d.id} bidder={d.bidder} amount={d.amount} date={d.date}/>
+                        )
+                    })}
+                </div>
+            </div>
 
 
         </div>
