@@ -1,6 +1,7 @@
 package com.revature.Project2.controller;
 
 import com.revature.Project2.pojo.Item;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -20,12 +21,19 @@ public class ItemConTest {
      * postItemTest() will run first because of
      * annotation @BeforeAll
      */
+
     @BeforeAll
     public void postItemTest(){
+//        private ObjectId id;
+//        private String title;
+//        private double price;
+//        private String owner;
+//        private int increment;
+//        private String image;
 
-        Item item = new Item(null, "title", 0, "owner", 0);
-        boolean flag = controller.postItem(item);
-        Assert.isTrue(flag, "Item was inserted into the db");
+        Item item = new Item(null, "title", 0.0, "owner", 0, null);
+        String flag = controller.addItem(item);
+        Assert.isTrue(flag.equalsIgnoreCase("200"), "Return 200, not error");
     }
 
     @Test
