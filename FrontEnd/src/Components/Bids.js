@@ -6,13 +6,12 @@ import Navbar from "./Navbar";
 
 function Bids(props){
     let username = sessionStorage.getItem("username");
-    let bids;
-    let items;
+    const [bids,setBids] = useState([]);
+    const [items, setItems] = useState([]);
 
-    React.useEffect(()=>{
-        getBids();
-        //getItems();
-    },[]);
+    // React.useEffect(()=>{
+    //     getBids();
+    // },[]);
 
     async function getBids(){
         await axios({
@@ -22,26 +21,27 @@ function Bids(props){
                 'Content-Type': 'application/json'
             }
         }).then(res => {
-            bids = res.data;
+            let response = res.data;
+            setBids(response);
             console.log(bids);
         })
             .catch(err => alert(err));
+    }
+
+    function getItems() {
+
     }
 
     return (
         <div >
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
-            <div className="bid-section">
-            <div><img className="item-image" src={image}/></div>
-                <p>Current bids</p>
-                <input type="text" className="filter" placeholder="Filter by name"/>
-                <select>
-                    <Bid/>
-                </select>
-                <div className="scroll">
-                </div>
-            </div>
+                    <button onClick={event => {event.preventDefault();getBids();getItems()}}>Render me</button>
+                {bids.map(d=>{
+                    return (
+                        <div key={d.id}>{d.title}</div>
+                    )
+                })}
 
 
         </div>
