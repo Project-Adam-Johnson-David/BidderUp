@@ -36,7 +36,7 @@ function Bid(props){
 
 
     return(
-    <div>
+    <div className="bids">
          {bids.map(b => {
             return(
                 <div className="bid" key={b.id}>

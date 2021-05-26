@@ -12,7 +12,7 @@ function Navbar(props){
     }
 
     return (
-      <div className="nav-bar">
+      <div className="nav-bar scrolled">
           <ul>
               <li><Link to="/HomePage">Home</Link></li>
               <li><Link to="/Account">View Balance</Link></li>
