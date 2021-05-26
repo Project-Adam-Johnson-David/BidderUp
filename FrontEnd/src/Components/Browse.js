@@ -6,8 +6,29 @@ import Item from "./Item";
 function Browse(props){
     const [data, setData] = useState([]);
     const [query, setQuery] = useState("");
+    const [exchangeCoeff, setExchangeCoeff] = useState(0)
+
+    const from = "USD"
+    const to = "PHP"
+    const conversion = from+"_"+to
+    const url = "https://free.currconv.com/api/v7/convert?q=" + conversion + "&compact=ultra&apiKey=79bbd7ca2e5ef55990e6"
+
+    async function convert() {
+        // await axios.get('https://free.currconv.com/api/v7/convert?q=+conversion+&compact=ultra&apiKey=79bbd7ca2e5ef55990e6')
+        await axios.get(url)
+        .then(response => {
+            let data = response.data[conversion]
+            var cc = require('currency-codes');
+            console.log(cc.country('United States of America (The)'));
+            console.log(data)
+            setExchangeCoeff(data)
+        })
+
+        .catch(err => alert(err))
+    }
 
     async function searchData(e){
+        convert()
         console.log(query);
         e.preventDefault();
         await axios({
@@ -18,7 +39,10 @@ function Browse(props){
             }
         }).then(res => {
             setData(res.data);
-            console.log(data);
+            console.log(data[0]);
+            //data.price.map(x => x * exchangeCoeff)
+            data.forEach(x => x.price = x.price*exchangeCoeff)
+            console.log(data[0])
         })
             .catch(err => alert(err));
     }
