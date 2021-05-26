@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @CrossOrigin(origins = "*")
@@ -32,7 +33,7 @@ public class BidController {
     }
 
     @GetMapping("/bids/{username}")
-    public List<Bid> getBidsById(@PathVariable("username") String username){
+    public ArrayList<Bid> getBidsById(@PathVariable("username") String username){
         System.out.println(service.findBidByOwner(username));
         return service.findBidByOwner(username);
     }
