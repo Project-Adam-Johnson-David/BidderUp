@@ -19,12 +19,15 @@ public class UserController {
     private UserService service;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody User user) {
+    public int login(@RequestBody User user) {
+        System.out.println(user.getPassword());
         if (service.verifyLogin(user.getUsername(), user.getPassword()))
-            return ResponseEntity.ok(service.findUser(user.getUsername()));
+//            return ResponseEntity.ok(service.findUser(user.getUsername()));
+            return 200;
         else
-            return new ResponseEntity<>("Invalid login credentials",
-                    HttpStatus.UNAUTHORIZED);
+//            return new ResponseEntity<>("Invalid login credentials",
+//                    HttpStatus.UNAUTHORIZED);
+        return 400;
     }
 
 

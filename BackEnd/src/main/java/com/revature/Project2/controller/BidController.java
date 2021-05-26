@@ -39,7 +39,7 @@ public class BidController {
     }
 
     @PostMapping(value ="/post_bid")
-    public void postBid(Bid bid){
+    public void postBid(@RequestBody Bid bid){
         repo.insert(bid);
     }
 }

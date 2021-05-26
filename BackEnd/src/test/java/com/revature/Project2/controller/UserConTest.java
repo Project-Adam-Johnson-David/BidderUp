@@ -17,12 +17,6 @@ public class UserConTest {
     @Autowired
     UserController controller;
 
-    @Test
-    public void getUsersTest(){
-       List<User> users = controller.getUsers();
-        Assert.notEmpty(users, "There are users in the list");
-    }
-
     @BeforeAll
     /**
      * signupTest() needs the db to be empty before insertion

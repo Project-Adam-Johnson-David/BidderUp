@@ -27,7 +27,7 @@ public class ItemController {
     @PostMapping("/addItem")
     public String addItem(@RequestBody Item item) throws IOException {
         //item
-
+        System.out.println(item.getOwner());
         if(service.insertItem(item)){
             return "200";
         }
