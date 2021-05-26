@@ -8,10 +8,17 @@ function Item(props){
     async function placeBid(e){
         e.preventDefault();
         console.log("bid placed " + price);
-        console.log(props.id);
+        let item =props.title;
+        let bidder = sessionStorage.getItem("username");
+        let owner = props.owner;
+        let date = new Date();
+        let amount = price;
+        console.log(item);
+        console.log(owner);
         await axios({
             method: 'post',
-            url: "http://localhost:8080/item/{d.id}",
+            url: "http://localhost:8080/bid/post_bid",
+            data:{item,owner,amount, date,bidder},
             headers : {
                 'Content-Type': 'application/json'
             }

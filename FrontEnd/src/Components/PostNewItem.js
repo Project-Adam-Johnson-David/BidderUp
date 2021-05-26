@@ -11,12 +11,12 @@ function PostNewItem(props){
         e.preventDefault();
         console.log(title);
         console.log(price);
-        let owner = props.username;
+        let owner = sessionStorage.getItem("username");
 
         await axios({
             method: 'post',
             url: "http://localhost:8080/item/addItem",
-            data: {price, title, increment, image},
+            data: {price, title, increment, image, owner},
             // params:{image},
             headers : {
                 'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ function PostNewItem(props){
         }).then(res => {
             let status = res.data;
             if(status===200){
-                clearInput();
+                // clearInput();
                 NotificationManager.success('Successful', 'Successfully added item!');
 
             }
