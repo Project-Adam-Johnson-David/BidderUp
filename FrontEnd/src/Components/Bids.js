@@ -5,11 +5,7 @@ import Bid from "./Bid";
 import Navbar from "./Navbar";
 
 function Bids(props){
-<<<<<<< HEAD
     const [bids, setBids] = useState([])
-=======
-   const [bids, setBids] = useState([])
->>>>>>> 7e6badfbbbdd63bf7ddea0cbf7d68eaff7abb839
     const [items, setItems] = useState([])
 //let bids = [];
 
@@ -27,15 +23,9 @@ function Bids(props){
                 'Content-Type': 'application/json'
             }
         }).then(res => {
-<<<<<<< HEAD
             setBids(res.data);
             //bids = res.data;
             console.log(bids);
-=======
-           setBids(res.data);
-           //bids = res.data;
-           console.log(bids);
->>>>>>> 7e6badfbbbdd63bf7ddea0cbf7d68eaff7abb839
         })
             .catch(err => alert(err));
     }
@@ -52,11 +42,7 @@ function Bids(props){
             setItems(response.data);
             console.log(items);
         })
-<<<<<<< HEAD
             .catch(error => console.error(error));
-=======
-        .catch(error => console.error(error));
->>>>>>> 7e6badfbbbdd63bf7ddea0cbf7d68eaff7abb839
     }
 
     function changeTab(){
@@ -68,15 +54,9 @@ function Bids(props){
         <div >
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
-<<<<<<< HEAD
             {/*<button onClick={props.toggleBidPage}>Browse</button>*/}
             <div className="bid-section">
                 <div><img className="item-image" src={image}/></div>
-=======
-                    {/*<button onClick={props.toggleBidPage}>Browse</button>*/}
-            <div className="bid-section">
-            <div><img className="item-image" src={image}/></div>
->>>>>>> 7e6badfbbbdd63bf7ddea0cbf7d68eaff7abb839
                 <p>Current bids</p>
                 <input type="text" className="filter" placeholder="Filter by name"/>
 
