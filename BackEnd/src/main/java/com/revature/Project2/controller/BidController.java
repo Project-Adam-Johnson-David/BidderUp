@@ -3,6 +3,7 @@ package com.revature.Project2.controller;
 import com.revature.Project2.pojo.Bid;
 import com.revature.Project2.repository.BidRepository;
 import com.revature.Project2.service.BidService;
+import com.revature.Project2.service.ItemService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
@@ -22,6 +23,7 @@ public class BidController {
     BidRepository repo;
     @Autowired
     BidService service;
+
 
     //methods
 

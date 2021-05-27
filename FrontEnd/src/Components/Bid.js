@@ -98,7 +98,7 @@ function Bid(props){
             headers : {
                 'Content-Type': 'application/json'
             }
-        }).then(res => {alert(res.data + " submitted");})
+        }).then(res => {alert(res.data + " submitted"); window.location.reload();})
             .catch(err => alert(err));
     }
     function find(){
