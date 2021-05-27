@@ -47,7 +47,7 @@ public class BidController {
     }
 
     @PostMapping(value ="/post_bid")
-    public boolean postBid(Bid bid){
+    public boolean postBid(@RequestBody Bid bid){
         try{
             repo.insert(bid);
             return true;
@@ -56,8 +56,6 @@ public class BidController {
             e.printStackTrace();
             return false;
         }
-        System.out.println(service.findBidByOwner(username));
-        return service.findBidByOwner(username);
     }
 
 }
