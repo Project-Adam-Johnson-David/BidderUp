@@ -29,6 +29,7 @@ function TestLogin(props){
             localStorage.setItem("username", username);
             sessionStorage.setItem("username", username);
             sessionStorage.setItem("country", res.data.country);
+            console.log(res.data.country)
             history.push('/HomePage')
             console.log(res.status);
             })

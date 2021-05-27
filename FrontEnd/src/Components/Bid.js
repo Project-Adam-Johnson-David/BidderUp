@@ -29,19 +29,19 @@ function Bid(props){
 
 
     return(
-     {bids.map(b => {
-        return(
-            <div className="bid" key={b.id}>
-                <div>
-                    <p>Bidder: {b.bidder}</p>
-                    <p>Price: {b.amount}</p>
-                    <p>Date submitted: {b.date}</p>
-                </div>
-                <button className="accept">accept</button>
-                <button  className="deny">deny</button>
-            </div>
-        )
-     })}
+    //  {bids.map(b => {
+    //     return(
+    //         <div className="bid" key={b.id}>
+    //             <div>
+    //                 <p>Bidder: {b.bidder}</p>
+    //                 <p>Price: {b.amount}</p>
+    //                 <p>Date submitted: {b.date}</p>
+    //             </div>
+    //             <button className="accept">accept</button>
+    //             <button  className="deny">deny</button>
+    //         </div>
+    //     )
+    //  })}
      <div>hello werldd</div>
    )
 }
