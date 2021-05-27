@@ -146,7 +146,7 @@ h5{
   /*box-shadow: 0 4px 4px rgba(0,0,0,0.1);*/
   /*width: 10rem;*/
   /*padding: 2rem 2rem;*/
-  text-align: center;
+  text-align: left;
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
   margin: 0.5rem 1rem;
   padding: 1rem 1rem;
@@ -212,4 +212,21 @@ h5{
 }
 select{
   margin: 1rem 1rem;
+}
+
+.pending-bids{
+  margin-top: 10rem;
+}
+
+.view-pending-bids{
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bid{
+  text-align: left;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  margin: 0.5rem 1rem;
+  padding: 1rem 1rem;
 }
