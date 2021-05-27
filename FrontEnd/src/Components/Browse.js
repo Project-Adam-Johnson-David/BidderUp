@@ -66,11 +66,14 @@ function Browse(props){
     }
 
     async function searchData(e){
+        let username = sessionStorage.getItem("username");
+        console.log(username+" did it get from the sssio ");
         console.log(query);
         e.preventDefault();
         await axios({
             method: 'get',
-            url: `http://localhost:8080/item/browse/${query}`,
+            url: `http://localhost:8080/item/browse/${query}/${username}`,
+            // data:username,
             headers : {
                 'Content-Type': 'application/json'
             }
@@ -103,7 +106,7 @@ function Browse(props){
                 <div className="browse-section-display">
                     {data.map(d=>{
                         return (
-                            <Item key={d.id} title={d.title} price={String(symbol) + String(d.price)} owner={d.owner}
+                            <Item key={d.id} title={d.title} price={String(symbol) + String(round(d.price,2))} owner={d.owner}
                                   image={d.image} coefficient={exchangeCoeff}
                                   increment={String(symbol) +
                                   String(round(Number(d.price)+Number(d.increment*exchangeCoeff),2)) }
