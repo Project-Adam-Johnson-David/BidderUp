@@ -32,9 +32,7 @@ function Bid(props){
             })
                 .catch(err => alert(err));
         }
-
-
-
+        
     return(
     <div className="bids">
          {bids.map(b => {
