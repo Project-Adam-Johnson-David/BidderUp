@@ -33,7 +33,13 @@ public class ItemService {
      */
     public List<Item> findOwnerItems(String owner){
         try{
-            return repo.findItemByOwner(owner);
+            List<Item> items = repo.findItemByOwner(owner);
+            for(int i = 0; i < items.size(); i++){
+                if(items.get(i).isAccepted()){
+                    items.remove(i);
+                }
+            }
+            return items;
         }
         catch (Exception e){
             e.printStackTrace();

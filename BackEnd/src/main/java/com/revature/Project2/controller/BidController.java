@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/bid")
@@ -49,6 +51,11 @@ public class BidController {
     @PostMapping(value ="/post_bid")
     public boolean postBid(@RequestBody Bid bid){
         try{
+            Random random = new Random();
+            int choice = random.nextInt(10000);
+            String done = Integer.toString(choice);
+            bid.setId(done);
+            bid.setStatus("pending");
             repo.insert(bid);
             return true;
         }
@@ -56,6 +63,13 @@ public class BidController {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @PostMapping(value="/bid_status/{value}")
+    public String bidStatus(@RequestBody String id, @PathVariable("value") String status){
+        String stat = service.setBidStatus(id, status);
+        System.out.println(id.toString());
+        return stat;
     }
 
 }

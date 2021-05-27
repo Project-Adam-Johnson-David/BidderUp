@@ -17,7 +17,7 @@ public class Item {
     private String owner;
     private int increment;
     private String image;
-
+    private boolean accepted;
     /*Thank you Lombok for the getters, setters, constructors, and toString()
     */
 }

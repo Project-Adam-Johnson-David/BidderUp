@@ -12,7 +12,7 @@ function Item(props){
         let bidder = sessionStorage.getItem("username");
         let owner = props.owner;
         let date = new Date();
-        let amount = price;
+        let amount = (price/props.coefficient);
         console.log(item);
         console.log(owner);
         await axios({
@@ -34,13 +34,15 @@ function Item(props){
         })
             .catch(err => alert(err));
     }
+
+
 return (
     <div className="item-display">
         <div>{props.title}</div>
 
         <img className="item-image" src={props.image} alt="image"/>
         <div>Price: {props.price}</div>
-        <div>Min Bid: {props.price+props.increment}</div>
+        <div>Min Bid: {props.increment}</div>
         <input type="number" onChange={e=>{setPrice(e.target.value)}} />
         <button onClick={(e)=>{ placeBid(e)}}>Bid</button>
     </div>
