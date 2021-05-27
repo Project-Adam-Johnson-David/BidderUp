@@ -76,7 +76,7 @@ function Account(props) {
 
 
     return (
-        <div>
+        <div className="account-page">
             <NotificationContainer/>
             <div>
             <Navbar></Navbar>

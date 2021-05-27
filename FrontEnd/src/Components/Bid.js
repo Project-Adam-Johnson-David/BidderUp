@@ -9,7 +9,6 @@ let obj = "";
         console.log(bids);
     },[]);
 
-
         const getBidsByItemName = () => {
         let item= props.item;
         let itemName = item.title;
@@ -65,5 +64,4 @@ let obj = "";
     </div>
    )
 }
-
 export default Bid;
