@@ -142,10 +142,14 @@ h5{
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
 }
 .item-display{
-  margin: 1rem 1rem;
+  /*margin: 1rem 1rem;*/
+  /*box-shadow: 0 4px 4px rgba(0,0,0,0.1);*/
+  /*width: 10rem;*/
+  /*padding: 2rem 2rem;*/
+  text-align: center;
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-  width: 10rem;
-  padding: 2rem 2rem;
+  margin: 0.5rem 1rem;
+  padding: 1rem 1rem;
 }
 .welcome{
   text-align: center;
@@ -156,8 +160,8 @@ h5{
 
 .browse-section{
   /*background-color: #3665f3;*/
-  margin:2rem 1rem;
-  margin: auto;
+  margin:5rem 1rem;
+  /*margin: auto;*/
   /*margin-top: 10rem;*/
   height: 30rem;
   box-shadow: 0 4px 4px rgba(0,0,0,0.1);
