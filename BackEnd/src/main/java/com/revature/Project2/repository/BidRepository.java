@@ -12,4 +12,5 @@ import java.util.List;
 public interface BidRepository extends MongoRepository<Bid, ObjectId> {
     ArrayList<Bid> findBidByOwner(String owner);
     ArrayList<Bid> findBidByItem(String item);
+    Bid findBidById(String id);
 }

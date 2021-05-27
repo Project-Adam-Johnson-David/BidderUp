@@ -2,6 +2,7 @@ package com.revature.Project2.service;
 
 import com.revature.Project2.pojo.Bid;
 import com.revature.Project2.repository.BidRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ public class BidService {
 
     @Autowired
     BidRepository repo;
+
 
     /**
      * Uses MongoRepository insert method for
@@ -44,6 +46,9 @@ public class BidService {
                 if(!owner.equals(bids.get(i).getOwner())){
                     bids.remove(i);
                 }
+                else if(bids.get(i).getStatus().equals("deny")){
+                    bids.remove(i);
+                }
             }
             return bids;
         }
@@ -51,5 +56,32 @@ public class BidService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * findById() gets a bid from the repo by id
+     * and sets the status to what ever is passed
+     * by the controller
+     * @param id
+     * @param status
+     * @return boolean flag
+     */
+    public String setBidStatus(String id, String status){
+       String flag = "pending";
+        try {
+           Bid bid = repo.findBidById(id);
+            System.out.println(bid.toString());
+           if (bid != null) {
+               repo.delete(bid);
+               bid.setStatus(status);
+               repo.insert(bid);
+               flag = status;
+           }
+           return flag;
+       }
+       catch (Exception e){
+           e.printStackTrace();
+           return flag;
+       }
     }
 }
