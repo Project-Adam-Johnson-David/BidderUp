@@ -99,4 +99,38 @@ public class UserService {
         System.out.println(user.getBalance()+"code was here");
         return user.getBalance();
     }
+
+    /**
+     * Helper method for exchanging money when a bid is accepted
+     * @param owner
+     * @param bidder
+     * @param amount
+     * @return boolean flag
+     */
+    public boolean exchangeCurrency(String owner, String bidder, double amount){
+        boolean flag = false;
+        try{
+            //Users
+            User userOwner = userRepo.findUserByUsername(owner);
+            User userBidder = userRepo.findUserByUsername(bidder);
+            //User money
+            double ownerMoney = userOwner.getBalance();
+            double bidderMoney = userBidder.getBalance();
+            //Increment by bid amount
+            ownerMoney+= amount;
+            bidderMoney-=amount;
+            //set the new balance of each user
+            userOwner.setBalance(ownerMoney);
+            userBidder.setBalance(bidderMoney);
+            //Save the changes to the Users
+            userRepo.save(userOwner);
+            userRepo.save(userBidder);
+            //return true
+            flag = true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }
