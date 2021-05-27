@@ -4,20 +4,27 @@ import axios from "axios";
 import {NotificationManager} from "react-notifications";
 
 function MyPendingBids(props){
+
+    React.useEffect(()=>{
+        searchData();
+
+    },[]);
     const [query, setQuery] = useState("*");
     const [bids, setBids] = useState([]);
 
     let username= sessionStorage.getItem("username");
-    async function searchData(e) {
+    console.log("hello?");
+    async function searchData() {
         console.log(username);
-        e.preventDefault();
         await axios({
             method: 'get',
-            url: `http://localhost:8080/bid/${username}/${query}`,
+            url: `http://localhost:8080/bid/accepted/${username}`,
             headers : {
                 'Content-Type': 'application/json'
             }
         }).then(res => {
+            console.log("this should return");
+            console.log(res.data);
             setBids(res.data);
         })
             .catch(err => alert(err));
@@ -28,12 +35,7 @@ function MyPendingBids(props){
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
             <div className="pending-bids">
-                <div className="filter">
-                    <label>Search for items</label>
-                    <input type="text" placeholder="filter"
-                           onChange={(e)=>{setQuery(e.target.value)}}/>
-                    <button onClick={searchData}>Search</button>
-                </div>
+
             </div>
 
             <div className="view-pending-bids">
@@ -42,8 +44,9 @@ function MyPendingBids(props){
                     {bids.map(b => {
                         return(
                             <div className="bid" key={b.id}>
-                                <div>
-                                    <p>Bidder: {b.bidder}</p>
+                                <div className="bid-info">
+                                    <p>Owner: {b.owner}</p>
+                                    <p>Bidder: {b.item}</p>
                                     <p>Price: {b.amount}</p>
                                     <p>Date submitted: {b.date}</p>
                                 </div>

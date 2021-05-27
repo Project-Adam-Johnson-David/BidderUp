@@ -50,6 +50,13 @@ public class BidController {
         return result;
     }
 
+    @GetMapping("/accepted/{username}")
+    public ArrayList<Bid> getAcceptedBids(@PathVariable("username") String username){
+        ArrayList result =service.findAcceptedBidsByBidder(username, "accept");
+        System.out.println(result);
+        return result;
+    }
+
     @PostMapping(value ="/post_bid")
     public boolean postBid(@RequestBody Bid bid){
         try{
