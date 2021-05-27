@@ -72,6 +72,9 @@ public class ItemController {
         return data;
     }
 
-
+    @GetMapping("/items/accepted/{owner}")
+    public List<Item> getAcceptedItems(@PathVariable("owner") String owner){
+        return service.findAcceptedOwnerItems(owner);
+    }
 
 }
