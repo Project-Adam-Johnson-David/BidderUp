@@ -20,6 +20,9 @@ public class BidService {
     @Autowired
     ItemService item;
 
+    @Autowired
+    UserService user;
+
     /**
      * Uses MongoRepository insert method for
      * Document insertion to the db
@@ -82,6 +85,7 @@ public class BidService {
 
                if(status.equals("accept")){
                    item.changeItemStatus(bid.getItem(), bid.getOwner());
+                   user.exchangeCurrency(bid.getOwner(), bid.getBidder(), bid.getAmount());
                    flag = status;
                }
            }
@@ -91,5 +95,17 @@ public class BidService {
            e.printStackTrace();
            return flag;
        }
+    }
+
+    public ArrayList findAcceptedBidsByBidder(String username, String status) {
+        //returns all pending bids by user
+//        System.out.println(username+status+"inside bid service");
+        ArrayList<Bid> pendingBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
+        //need to check if the item is still being sold
+//        for(int i =0 ; i < pendingBidsByUser.size(); i++){
+//            item.find
+//        }
+        return pendingBidsByUser;
+
     }
 }

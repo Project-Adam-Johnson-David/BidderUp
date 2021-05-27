@@ -102,10 +102,13 @@ public class ItemService {
         }
     }
 
-    public ArrayList<Item> findItems(String query) {
+    public ArrayList<Item> findItems(String query, String username) {
         ArrayList<Item> items = repo.findByTitle(query);
         for(int i = 0 ; i < items.size(); i++){
             if(items.get(i).isAccepted()){
+                items.remove(i);
+            }
+            else if(items.get(i).getOwner().equals(username)){
                 items.remove(i);
             }
         }
@@ -124,9 +127,8 @@ public class ItemService {
                 }
             }
             if (item != null) {
-                repo.delete(item);
                 item.setAccepted(true);
-                repo.insert(item);
+                repo.save(item);//should set the item
                 flag = true;
             }
         }
