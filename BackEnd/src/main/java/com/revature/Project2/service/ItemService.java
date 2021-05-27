@@ -124,9 +124,8 @@ public class ItemService {
                 }
             }
             if (item != null) {
-                repo.delete(item);
                 item.setAccepted(true);
-                repo.insert(item);
+                repo.save(item);//should set the item
                 flag = true;
             }
         }

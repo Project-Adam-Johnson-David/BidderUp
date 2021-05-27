@@ -20,6 +20,9 @@ public class BidService {
     @Autowired
     ItemService item;
 
+    @Autowired
+    UserService user;
+
     /**
      * Uses MongoRepository insert method for
      * Document insertion to the db
@@ -82,6 +85,7 @@ public class BidService {
 
                if(status.equals("accept")){
                    item.changeItemStatus(bid.getItem(), bid.getOwner());
+                   user.exchangeCurrency(bid.getOwner(), bid.getBidder(), bid.getAmount());
                    flag = status;
                }
            }
