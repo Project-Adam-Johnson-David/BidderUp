@@ -20,8 +20,9 @@ function Browse(props){
 
     // grab the country to set the currency code
     useEffect(()=>{
-
-        const url = "https://restcountries.eu/rest/v2/name/" + "Philippines"
+        let country = sessionStorage.getItem("country");
+        console.log(country);
+        const url = "https://restcountries.eu/rest/v2/name/" + country;
         getCode(url)
         console.log(foreign)
     }, [])
@@ -84,6 +85,10 @@ function Browse(props){
         })
             .catch(err => alert(err));
     }
+
+    function round(value, decimals) {
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    }
     
     return(
         <div>
@@ -99,7 +104,10 @@ function Browse(props){
                     {data.map(d=>{
                         return (
                             <Item key={d.id} title={d.title} price={String(symbol) + String(d.price)} owner={d.owner}
-                                  image={d.image} increment={String(symbol) + String(Number(d.price)+Number(d.increment)) } id={d.id}/>
+                                  image={d.image} coefficient={exchangeCoeff}
+                                  increment={String(symbol) +
+                                  String(round(Number(d.price)+Number(d.increment*exchangeCoeff),2)) }
+                                  id={d.id}/>
                         )
                     })}
                 </div>

@@ -29,6 +29,7 @@ public class ItemController {
         //item
 
         String status = "error";
+        item.setAccepted(false);
         if(service.insertItem(item)){status = "200";}
         return status;
     }

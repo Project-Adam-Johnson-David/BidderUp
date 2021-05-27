@@ -59,7 +59,9 @@ function Signup(props){
                 <select onChange={e=>setCountry(e.target.value)}>
                     <option value=""></option>
                     <option value="USA">USA</option>
-                    <option value="England">England</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
                 </select>
                 <button type="submit">Sign up!</button>
                 <button onClick={back}>Back to Login</button>

@@ -12,7 +12,7 @@ function Item(props){
         let bidder = sessionStorage.getItem("username");
         let owner = props.owner;
         let date = new Date();
-        let amount = price;
+        let amount = (price/props.coefficient);
         console.log(item);
         console.log(owner);
         await axios({
@@ -34,6 +34,8 @@ function Item(props){
         })
             .catch(err => alert(err));
     }
+
+
 return (
     <div className="item-display">
         <div>{props.title}</div>

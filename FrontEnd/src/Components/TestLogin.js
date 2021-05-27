@@ -28,6 +28,7 @@ function TestLogin(props){
             NotificationManager.success('Successful', 'Successfully logged in!');
             localStorage.setItem("username", username);
             sessionStorage.setItem("username", username);
+            console.log(res.data.country);
             sessionStorage.setItem("country", res.data.country);
             console.log(res.data.country)
             history.push('/HomePage')
