@@ -17,13 +17,14 @@ import java.util.Date;
 public class Bid {
     //vars
     @Id
-    private ObjectId id;
+    private String id;
     private String item;
     private String owner;
     private String bidder;
     private double amount;
     @CreatedDate
     private Date date;
+    private String status;
 
     /*
     Setters, Getters, Constructors, and toString handled by Lombok!!!
