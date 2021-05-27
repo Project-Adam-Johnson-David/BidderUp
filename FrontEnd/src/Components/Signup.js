@@ -37,6 +37,7 @@ function Signup(props){
                 if(status===200){
                     // NotificationManager.success('Successful', 'Successfully Submitted the Reimbursement Request!');
                     console.log(res.status);
+                    history.push('/');
                 }
                 else{
                     // NotificationManager.error('Unsuccessful', 'Sorry, we couldn\'t change your email');
