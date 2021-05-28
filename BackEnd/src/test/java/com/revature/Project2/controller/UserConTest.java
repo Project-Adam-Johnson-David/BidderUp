@@ -23,6 +23,19 @@ public class UserConTest {
     UserController controller;
     UserRepository repository;
 
+
+    @Test
+    public void updateAllTest(){
+        try{
+            User user = new User();
+            user.setUsername("none");
+            repository.insert(user);
+            controller.updateUsername("Adam", "none");
+            controller.updateCountry("Country", "Adam");
+            User adam = repository.findUserByUsername("Adam");
+            Assert.isTrue(adam.getCountry().equalsIgnoreCase("Country"), "Adam is from Country");
+        }
+        catch(Exception e){e.printStackTrace();}}
     User user;
     @BeforeTestClass
     public void beforeClass(){
@@ -73,6 +86,22 @@ public class UserConTest {
     }
 
     @Test
+    public void getBalanceTest(){
+        try {
+            User user = new User();
+            user.setBalance(20);
+            user.setUsername("Carter");
+            repository.insert(user);
+
+            double balance = controller.getBalance("Carter");
+            Assert.isTrue(balance == 20, "balance equals 20");
+            repository.delete(user);
+        }
+        catch (Exception e){
+            e.getMessage();
+        }
+    }
+
     public void withdrawTest(){
         try{
             ResponseEntity res = controller.withdraw(30, user.getUsername());
@@ -82,7 +111,6 @@ public class UserConTest {
         }
 
     }
-
 
 
 

@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Document(collection = "users")
 public class User {
     //vars

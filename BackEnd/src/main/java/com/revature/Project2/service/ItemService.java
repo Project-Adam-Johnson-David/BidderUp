@@ -24,10 +24,7 @@ public class ItemService {
         repo.insert(item);
         return true;
         }
-        catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
+        catch(Exception e){ e.printStackTrace(); return false; }
 
     }
 
@@ -47,10 +44,7 @@ public class ItemService {
             }
             return items;
         }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
+        catch (Exception e){ e.printStackTrace(); return null; }
     }
 
     /**
@@ -64,15 +58,9 @@ public class ItemService {
             List<Item> items = repo.findItemByOwner(owner);
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).isAccepted() != true) {
-                    items.remove(i);
-                }
-            }
-            return items;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
+                    items.remove(i); } }
+            return items; }
+        catch (Exception e){ e.printStackTrace(); return null; }
     }
 
 
@@ -92,50 +80,33 @@ public class ItemService {
                     item = i;//Set Item to the item in the list items
                 }
                 else{
-                    item = null;
-                }
-            }
-            return item;
-        }
-        catch(Exception e){
-            return null;
-        }
+                    item = null; } }
+            return item; }
+        catch(Exception e){ return null; }
     }
 
     public ArrayList<Item> findItems(String query, String username) {
         ArrayList<Item> items = repo.findByTitle(query);
         for(int i = 0 ; i < items.size(); i++){
             if(items.get(i).isAccepted()){
-                items.remove(i);
-            }
+                items.remove(i); }
             else if(items.get(i).getOwner().equals(username)){
-                items.remove(i);
-            }
+                items.remove(i); }
         }
-        return items;
-    }
+        return items; }
 
     public boolean changeItemStatus(String title, String owner) {
         boolean flag = false;
-        try {
-            Item item = new Item();
-            List<Item> items = repo.findItemByOwner(owner);
+        try { Item item = new Item();List<Item> items = repo.findItemByOwner(owner);
 
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).getTitle().equals(title)) {
-                    item = items.get(i);
-                }
-            }
+                    item = items.get(i); } }
             if (item != null) {
                 item.setAccepted(true);
                 repo.save(item);//should set the item
-                flag = true;
-            }
+                flag = true; }
         }
-        catch(Exception exception){
-            exception.printStackTrace();
-        }
-        return flag;
-    }
+        catch(Exception exception){ exception.printStackTrace(); }return flag; }
 
 }

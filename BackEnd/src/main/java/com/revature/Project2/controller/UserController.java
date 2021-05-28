@@ -23,20 +23,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody User user) {
         log.info("attempting login");
-        if (service.verifyLogin(user.getUsername(), user.getPassword()))
-            return ResponseEntity.ok(service.findUser(user.getUsername()));
-        else
-            return new ResponseEntity<>("Invalid login credentials",
+        if (service.verifyLogin(user.getUsername(), user.getPassword())) return ResponseEntity.ok(service.findUser(user.getUsername()));
+        else return new ResponseEntity<>("Invalid login credentials",
                     HttpStatus.UNAUTHORIZED);
-
     }
 
     @PostMapping("/signup")
     public int signup(@RequestBody User user){
         int status = 400;
-        if(service.addUser(user)){
-            status = 200;
-        }
+        if(service.addUser(user)){ status = 200; }
         return status;
     }
 
@@ -53,24 +48,20 @@ public class UserController {
 
     @PostMapping("/withdrawal")
     public ResponseEntity withdraw(@RequestParam double withdrawal, @RequestParam String username) {
-        if (service.userCanWithdraw(withdrawal, username)) {
-            service.withdrawForUser(withdrawal, username);
+        if (service.userCanWithdraw(withdrawal, username)) { service.withdrawForUser(withdrawal, username);
             return new ResponseEntity<>("Successful Withdraw", HttpStatus.OK);
         }
-        else {
-            return new ResponseEntity<>("Balance can't be below zero",
+        else { return new ResponseEntity<>("Balance can't be below zero",
                     HttpStatus.FORBIDDEN);
         }
     }
 
     @PostMapping("/update_username")
     public void updateUsername(@RequestParam String updatedInfo, @RequestParam String username) {
-        service.updateUsernameForUser(updatedInfo, username);
-    }
+        service.updateUsernameForUser(updatedInfo, username); }
 
     @PostMapping("/update_country")
     public void updateCountry(@RequestParam String updatedInfo, @RequestParam String username) {
-        service.updateCountryForUser(updatedInfo, username);
-    }
+        service.updateCountryForUser(updatedInfo, username); }
 
 }

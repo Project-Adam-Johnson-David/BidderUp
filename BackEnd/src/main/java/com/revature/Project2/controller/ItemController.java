@@ -62,19 +62,11 @@ public class ItemController {
     @GetMapping("/browse/{query}/{username}")
     public ArrayList<Item> browseItems(@PathVariable("query") String query, @PathVariable("username") String username){
         ArrayList data= new ArrayList();
-        try{
-            data= service.findItems(query, username);
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return data;
-    }
+        try{ data= service.findItems(query, username); } catch (Exception e){ e.printStackTrace();
+        }return data; }
 
     @GetMapping("/items/accepted/{owner}")
     public List<Item> getAcceptedItems(@PathVariable("owner") String owner){
-        return service.findAcceptedOwnerItems(owner);
-    }
+        return service.findAcceptedOwnerItems(owner); }
 
 }
