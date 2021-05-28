@@ -52,7 +52,7 @@ class BidContTest {
 
     @Test
     public void getAcceptedBidsTest(){
-        ArrayList<Bid> list = controller.getAcceptedBids("username");
+        ArrayList<Bid> list = controller.getAcceptedBids("username", "*");
         Assert.noNullElements(list, "No null elements");
     }
     @Test

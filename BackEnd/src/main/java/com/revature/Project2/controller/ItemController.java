@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements the controller for the Items that are
+ * placed for sale by users.
+ *
+ */
 @RestController
 @RequestMapping("/item")
 @Log4j2
@@ -26,6 +31,11 @@ public class ItemController {
     @Autowired
     ItemRepository repo;
 
+    /**
+     * This controller handles when a user adds a new item to sell.
+     * @param item this is the object of an item to be sold
+     * @return returns a status of 200 if it is successful
+     */
     @PostMapping("/addItem")
     public String addItem(@RequestBody Item item) {
         //item
@@ -62,6 +72,13 @@ public class ItemController {
         return service.findOwnerItem(owner, title);
     }
 
+    /**
+     * This method controls the browsing using a query
+     * @param query this is the query that the user uses to search for items
+     * @param username this is the username of the user querying, this is used to
+     *                 ensure the user's own items are not displayed
+     * @return an arrraylist of items are returned to the user
+     */
     @GetMapping("/browse/{query}/{username}")
     public ArrayList<Item> browseItems(@PathVariable("query") String query, @PathVariable("username") String username){
         log.info("searching for items in controller");
@@ -69,6 +86,11 @@ public class ItemController {
         try{ data= service.findItems(query, username); } catch (Exception e){ e.printStackTrace();
         }return data; }
 
+    /**
+     * This method controlls the handling of returning all accepted items of a user
+     * @param owner  the user who's bid has been accepted
+     * @return this returns a list of items that has been accepted
+     */
     @GetMapping("/items/accepted/{owner}")
     public List<Item> getAcceptedItems(@PathVariable("owner") String owner){
         log.info("getting accepted items in controller");

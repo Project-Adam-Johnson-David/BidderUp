@@ -53,11 +53,23 @@ public class BidService {
         return flag;
     }
 
+    /**
+     * find a bid by the bid owner
+     * @param owner
+     * @return ArrayList list
+     */
     public ArrayList<Bid> findBidByOwner(String owner){
         ArrayList<Bid> list = repo.findBidByOwner(owner);
         return list;
     }
 
+    /**
+     * Service method that filters out bids of an owner
+     * and removes denied bids from the list of bids
+     * @param owner
+     * @param item
+     * @return ArrayList of bids
+     */
     public ArrayList<Bid> findBidByItem(String owner, String item){
         try {
             ArrayList<Bid> bids = repo.findBidByItem(item);
@@ -94,14 +106,31 @@ public class BidService {
        }
     }
 
-    public ArrayList findAcceptedBidsByBidder(String username, String status) {
+    /**
+     * Finds pending bids of a user by status
+     * and by username
+     * @param username
+     * @param status
+     * @return ArrayList of bids
+     */
+    public ArrayList findAcceptedBidsByBidder(String username, String status,String query) {
         //returns all pending bids by user
-        ArrayList<Bid> pendingBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
+        if(query.equals("*")){
+            ArrayList<Bid> acceptedBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
+            System.out.println(acceptedBidsByUser);
+            return acceptedBidsByUser;
+        }
+        else{
+            ArrayList<Bid> acceptedBidsByUser = repo.findBidsByBidderAndStatusEqualsAndItemIsLike(username, status,query);
+            System.out.println(acceptedBidsByUser);
+            return acceptedBidsByUser;
+        }
+
         //need to check if the item is still being sold
 //        for(int i =0 ; i < pendingBidsByUser.size(); i++){
 //            item.find
 //        }
-        return pendingBidsByUser;
+
 
     }
 
