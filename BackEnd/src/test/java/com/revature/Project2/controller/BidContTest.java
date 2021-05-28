@@ -1,7 +1,9 @@
 package com.revature.Project2.controller;
 
 import com.revature.Project2.pojo.Bid;
+import com.revature.Project2.pojo.Item;
 import com.revature.Project2.repository.BidRepository;
+import com.revature.Project2.repository.ItemRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +25,8 @@ class BidContTest {
     BidController controller;
     @Autowired
     BidRepository repository;
+    @Autowired
+    ItemRepository itemRepo;
 
     @Test
     public void getBidsTest(){
@@ -61,11 +65,21 @@ class BidContTest {
 
     @Test
     public void bidStatusTest(){
-        Bid bid = new Bid("0", "item", "owner", "bidder", 0, new Date(), "pending");
+        try{
+        Item item = new Item(null, "item", 0, "owner", 0, "none", false);
+        itemRepo.insert(item);
+        Bid bid = new Bid("69", "item", "owner", "bidder", 0, new Date(), "pending");
         boolean post = controller.postBid(bid);
         repository.insert(bid);
         String stat = controller.bidStatus("0", "accept");
         Assert.isTrue(stat.equalsIgnoreCase("accept" ), "Strings should be equal");
         repository.delete(bid);
+        itemRepo.delete(item);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
+
 }

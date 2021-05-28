@@ -19,21 +19,52 @@ public class UserConTest {
     UserController controller;
     UserRepository repository;
 
-    @BeforeAll
-    /**
-     * signupTest() needs the db to be empty before insertion
-     */
-    public void signupTest(){
-        User user = new User();
-        user.setId(null);
-        user.setPassword("Password");
-        user.setUsername("Peggy"); //username must be random or the db cleared to pass
-        int status = controller.signup(user);//Empty user object
-
-        Assert.isTrue(status == 200, "Status should be 200");
-
-        repository.delete(user);
+//    @Test
+//    /**
+//     * signupTest() needs the db to be empty before insertion
+//     */
+//    public void signupTest(){
+//        User user = new User();
+//        user.setId(null);
+//        user.setPassword("Password");
+//        user.setUsername("Peggy"); //username must be random or the db cleared to pass
+//        int status = controller.signup(user);//Empty user object
+//
+//        Assert.isTrue(status == 200, "Status should be 200");
+//
+//        repository.delete(user);
+//    }
+    @Test
+    public void updateAllTest(){
+        try{
+            User user = new User();
+            user.setUsername("none");
+            repository.insert(user);
+            controller.updateUsername("Adam", "none");
+            controller.updateCountry("Country", "Adam");
+            User adam = repository.findUserByUsername("Adam");
+            Assert.isTrue(adam.getCountry().equalsIgnoreCase("Country"), "Adam is from Country");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
+    @Test
+    public void getBalanceTest(){
+        try {
+            User user = new User();
+            user.setBalance(20);
+            user.setUsername("Carter");
+            repository.insert(user);
+
+            double balance = controller.getBalance("Carter");
+            Assert.isTrue(balance == 20, "balance equals 20");
+            repository.delete(user);
+        }
+        catch (Exception e){
+            e.getMessage();
+        }
+    }
 
 }

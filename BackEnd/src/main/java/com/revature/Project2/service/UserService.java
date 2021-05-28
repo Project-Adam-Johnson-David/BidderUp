@@ -54,8 +54,7 @@ public class UserService {
         if(password.equals(usr.getPassword())){
             flag = true;
         }
-        return flag;
-    }
+        return flag; }
 
     /**
      * Add user to the database
@@ -71,33 +70,26 @@ public class UserService {
                 userRepo.insert(user);
                 flag = true;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return flag;
-    }
+        }catch (Exception e){ e.printStackTrace(); }
+        return flag; }
 
     public void depositForUser(double deposit, String username) {
         User user = userRepo.findUserByUsername(username);
         user.setBalance(user.getBalance()+deposit);
-        userRepo.save(user);
-    }
+        userRepo.save(user); }
 
     public void withdrawForUser(double withdraw, String username) {
         User user = userRepo.findUserByUsername(username);
         user.setBalance(user.getBalance()-withdraw);
-        userRepo.save(user);
-    }
+        userRepo.save(user); }
 
     public boolean userCanWithdraw(double withdrawal, String username) {
         User user = findUser(username);
-        return (user.getBalance() - withdrawal < 0);
-    }
+        return (user.getBalance() - withdrawal < 0); }
 
     public double findBalance(String username) {
         User user= findUser(username);
-        return user.getBalance();
-    }
+        return user.getBalance(); }
 
     /**
      * Helper method for exchanging money when a bid is accepted
@@ -113,23 +105,17 @@ public class UserService {
             User userOwner = userRepo.findUserByUsername(owner);
             User userBidder = userRepo.findUserByUsername(bidder);
             //User money
-            double ownerMoney = userOwner.getBalance();
-            double bidderMoney = userBidder.getBalance();
+            double ownerMoney = userOwner.getBalance(); double bidderMoney = userBidder.getBalance();
             //Increment by bid amount
-            ownerMoney+= amount;
-            bidderMoney-=amount;
+            ownerMoney+= amount; bidderMoney-=amount;
             //set the new balance of each user
-            userOwner.setBalance(ownerMoney);
-            userBidder.setBalance(bidderMoney);
+            userOwner.setBalance(ownerMoney); userBidder.setBalance(bidderMoney);
             //Save the changes to the Users
-            userRepo.save(userOwner);
-            userRepo.save(userBidder);
+            userRepo.save(userOwner); userRepo.save(userBidder);
             //return true
             flag = true;
         }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        catch(Exception e){ e.printStackTrace(); }
         return flag;
     }
 
