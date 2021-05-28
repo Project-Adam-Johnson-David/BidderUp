@@ -40,6 +40,12 @@ public class BidController {
         return list;
     }
 
+    /**
+     * Get bids of an owner by item name
+     * @param owner
+     * @param item
+     * @return ArrayList of bids
+     */
     @GetMapping("/bids/{owner}/{itemName}")
     public ArrayList<Bid> getItemBids(@PathVariable("owner") String owner, @PathVariable("itemName") String item){
         log.info("finding bids by item in controller");
@@ -47,6 +53,11 @@ public class BidController {
         return bids;
     }
 
+    /**
+     * Finds bids by document var username
+     * @param username
+     * @return ArrayList of bids
+     */
     @GetMapping("/bids/{username}")
     public ArrayList<Bid> getBidsById(@PathVariable("username") String username){
         log.info("finding bids by ID in controller");
@@ -55,20 +66,35 @@ public class BidController {
         return result;
     }
 
-    @GetMapping("/accepted/{username}")
-    public ArrayList<Bid> getAcceptedBids(@PathVariable("username") String username){
-        log.info("getting accepted bids in controller");
-        ArrayList result =service.findAcceptedBidsByBidder(username, "accept");
+    /**
+     * Finds all bids with an "accept" status
+     * @param username
+     * @return ArrayList of bids
+     */
+    @GetMapping("/accepted/{username}/{query}")
+    public ArrayList<Bid> getAcceptedBids(@PathVariable("username") String username,@PathVariable("query")String query){
+        ArrayList result =service.findAcceptedBidsByBidder(username, "accept", query);
         System.out.println(result);
         return result;
     }
 
+    /**
+     * posts a bid to the Database
+     * @param bid
+     * @return boolean value
+     */
     @PostMapping(value ="/post_bid")
     public boolean postBid(@RequestBody Bid bid){
         log.info("request to post a bid in controller");
         return service.postBid(bid);
     }
 
+    /**
+     * Updates a bids status
+     * @param id
+     * @param status
+     * @return String status
+     */
     @PostMapping(value="/bid_status/{value}")
     public String bidStatus(@RequestBody String id, @PathVariable("value") String status){
         log.info("setting status of bid in controller");
