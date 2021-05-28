@@ -30,6 +30,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public int signup(@RequestBody User user){
+        log.info("User controller: signup");
         int status = 400;
         if(service.addUser(user)){ status = 200; }
         return status;
