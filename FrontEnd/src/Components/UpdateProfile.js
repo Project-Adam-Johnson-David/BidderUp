@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import {NotificationManager, NotificationContainer} from "react-notifications";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 
-function UpdateProfile() {
+function UpdateProfile(props) {
     const [username, setUsername] = useState(sessionStorage.getItem("username") || "")
     const [country, setCountry] = useState(sessionStorage.getItem("country") || "")
     const [newUsername, setNewUsername] = useState("")
@@ -45,6 +46,10 @@ function UpdateProfile() {
 
     return (
         <div>
+            <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
+                    goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}
+                    goPostNewItem={props.goPostNewItem}/>
+
             <NotificationContainer/>
                 <form onSubmit={handleUpdateUsername}>
                     <h3>Username: {username}</h3>
