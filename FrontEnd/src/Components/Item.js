@@ -12,6 +12,9 @@ function Item(props){
         let bidder = sessionStorage.getItem("username");
         let owner = props.owner;
         let date = new Date();
+        // if(amount < mi){
+        //    
+        // }
         let amount = (price/props.coefficient);
         console.log(item);
         console.log(owner);
