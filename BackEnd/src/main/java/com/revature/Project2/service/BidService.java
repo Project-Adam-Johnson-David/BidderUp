@@ -94,14 +94,24 @@ public class BidService {
        }
     }
 
-    public ArrayList findAcceptedBidsByBidder(String username, String status) {
+    public ArrayList findAcceptedBidsByBidder(String username, String status,String query) {
         //returns all pending bids by user
-        ArrayList<Bid> pendingBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
+        if(query.equals("*")){
+            ArrayList<Bid> acceptedBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
+            System.out.println(acceptedBidsByUser);
+            return acceptedBidsByUser;
+        }
+        else{
+            ArrayList<Bid> acceptedBidsByUser = repo.findBidsByBidderAndStatusEqualsAndItemIsLike(username, status,query);
+            System.out.println(acceptedBidsByUser);
+            return acceptedBidsByUser;
+        }
+
         //need to check if the item is still being sold
 //        for(int i =0 ; i < pendingBidsByUser.size(); i++){
 //            item.find
 //        }
-        return pendingBidsByUser;
+
 
     }
 
