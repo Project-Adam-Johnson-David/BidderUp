@@ -66,9 +66,9 @@ public class BidController {
      * @param username
      * @return ArrayList of bids
      */
-    @GetMapping("/accepted/{username}")
-    public ArrayList<Bid> getAcceptedBids(@PathVariable("username") String username){
-        ArrayList result =service.findAcceptedBidsByBidder(username, "accept");
+    @GetMapping("/accepted/{username}/{query}")
+    public ArrayList<Bid> getAcceptedBids(@PathVariable("username") String username,@PathVariable("query")String query){
+        ArrayList result =service.findAcceptedBidsByBidder(username, "accept", query);
         System.out.println(result);
         return result;
     }
