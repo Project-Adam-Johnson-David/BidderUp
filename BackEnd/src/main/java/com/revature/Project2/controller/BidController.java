@@ -59,19 +59,7 @@ public class BidController {
 
     @PostMapping(value ="/post_bid")
     public boolean postBid(@RequestBody Bid bid){
-        try{
-            Random random = new Random();
-            int choice = random.nextInt(10000);
-            String done = Integer.toString(choice);
-            bid.setId(done);
-            bid.setStatus("pending");
-            repo.insert(bid);
-            return true;
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
+        return service.postBid(bid);
     }
 
     @PostMapping(value="/bid_status/{value}")
