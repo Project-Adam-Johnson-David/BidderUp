@@ -65,7 +65,6 @@ public class BidController {
     @PostMapping(value="/bid_status/{value}")
     public String bidStatus(@RequestBody String id, @PathVariable("value") String status){
         String stat = service.setBidStatus(id, status);
-        System.out.println(id.toString());
         return stat;
     }
 
