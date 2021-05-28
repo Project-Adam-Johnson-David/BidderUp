@@ -85,6 +85,13 @@ public class ItemService {
         catch(Exception e){ return null; }
     }
 
+    /**
+     * This method finds items using a query and the username for
+     * a user.
+     * @param query the parameter used to query for items
+     * @param username this is the username of the user querying
+     * @return
+     */
     public ArrayList<Item> findItems(String query, String username) {
         ArrayList<Item> items = repo.findByTitle(query);
         for(int i = 0 ; i < items.size(); i++){
@@ -95,6 +102,13 @@ public class ItemService {
         }
         return items; }
 
+    /**
+     * This method changes the status of the user of an object using the
+     * name of the owner
+     * @param title this is the title of the item
+     * @param owner this is the name of the owner
+     * @return
+     */
     public boolean changeItemStatus(String title, String owner) {
         boolean flag = false;
         try { Item item = new Item();List<Item> items = repo.findItemByOwner(owner);
