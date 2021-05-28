@@ -51,10 +51,8 @@ public class UserService {
     public boolean verifyLogin(String username, String password){
         boolean flag = false;
         User usr = userRepo.findUserByUsername(username);
-        if(password.equals(usr.getPassword())){
-            flag = true;
-        }
-        return flag; }
+        if(password.equals(usr.getPassword())){ flag = true;
+        }return flag; }
 
     /**
      * Add user to the database
@@ -66,11 +64,8 @@ public class UserService {
         boolean flag = false;
         try{
             User found = userRepo.findUserByUsername(user.getUsername());
-            if(found==null){
-                userRepo.insert(user);
-                flag = true;
-            }
-        }catch (Exception e){ e.printStackTrace(); }
+            if(found==null){ userRepo.insert(user);flag = true;
+            } }catch (Exception e){ e.printStackTrace(); }
         return flag; }
 
     public void depositForUser(double deposit, String username) {
@@ -113,21 +108,14 @@ public class UserService {
             //Save the changes to the Users
             userRepo.save(userOwner); userRepo.save(userBidder);
             //return true
-            flag = true;
-        }
-        catch(Exception e){ e.printStackTrace(); }
-        return flag;
+            flag = true; } catch(Exception e){ e.printStackTrace(); }return flag;
     }
 
     public void updateUsernameForUser(String newUsername, String username) {
-        User user = userRepo.findUserByUsername(username);
-        user.setUsername(newUsername);
-        userRepo.save(user);
+        User user = userRepo.findUserByUsername(username);user.setUsername(newUsername);userRepo.save(user);
     }
 
     public void updateCountryForUser(String newCountry, String username) {
-        User user = userRepo.findUserByUsername(username);
-        user.setCountry(newCountry);
-        userRepo.save(user);
+        User user = userRepo.findUserByUsername(username);user.setCountry(newCountry);userRepo.save(user);
     }
 }
