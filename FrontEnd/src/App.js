@@ -11,7 +11,7 @@ import Browse from './Components/Browse';
 import Bids from './Components/Bids';
 import { PrivateRoute } from './Components/PrivateRoute';
 import PostNewItem from "./Components/PostNewItem";
-import MyPendingBids from "./Components/MyPendingBids";
+import MyAcceptedBids from "./Components/MyAcceptedBids";
 import UpdateProfile from "./Components/UpdateProfile";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <PrivateRoute exact path="/Account" component={Account} />
       <PrivateRoute exact path="/Browse" component={Browse} />
       <PrivateRoute exact path="/Bids" component={Bids} />
-      <PrivateRoute exact path="/MyAcceptedBids" component={MyPendingBids} />
+      <PrivateRoute exact path="/MyAcceptedBids" component={MyAcceptedBids} />
       <PrivateRoute exact path="/UpdateProfile" component={UpdateProfile} />
       <PrivateRoute exact path="/PostNewItem" component={PostNewItem} />
     </Switch>
