@@ -21,8 +21,13 @@ public class UserService {
      * @return List<User> list
      */
     public List<User> findAllUsers(){
-        List<User> list = userRepo.findAll();
-        return list;
+        try{
+            return userRepo.findAll();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -32,9 +37,7 @@ public class UserService {
      * @return User user
      */
     public User findUser(String username){
-        User user1 = new User();
-        User user = userRepo.findUserByUsername(username);
-        return user;
+        return userRepo.findUserByUsername(username);
     }
 
     /**
@@ -88,15 +91,11 @@ public class UserService {
 
     public boolean userCanWithdraw(double withdrawal, String username) {
         User user = findUser(username);
-        if (user.getBalance() - withdrawal < 0)
-            return false;
-        else
-            return true;
+        return (user.getBalance() - withdrawal < 0);
     }
 
     public double findBalance(String username) {
         User user= findUser(username);
-        System.out.println(user.getBalance()+"code was here");
         return user.getBalance();
     }
 
@@ -132,5 +131,17 @@ public class UserService {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public void updateUsernameForUser(String newUsername, String username) {
+        User user = userRepo.findUserByUsername(username);
+        user.setUsername(newUsername);
+        userRepo.save(user);
+    }
+
+    public void updateCountryForUser(String newCountry, String username) {
+        User user = userRepo.findUserByUsername(username);
+        user.setCountry(newCountry);
+        userRepo.save(user);
     }
 }

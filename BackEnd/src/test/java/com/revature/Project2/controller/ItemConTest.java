@@ -31,7 +31,7 @@ public class ItemConTest {
 //        private int increment;
 //        private String image;
 
-        Item item = new Item(null, "title", 0.0, "owner", 0, null);
+        Item item = new Item(null, "title", 0.0, "owner", 0, null, false );
         String flag = controller.addItem(item);
         Assert.isTrue(flag.equalsIgnoreCase("200"), "Return 200, not error");
     }

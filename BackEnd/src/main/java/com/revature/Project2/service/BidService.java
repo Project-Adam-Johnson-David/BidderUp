@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class BidService {
@@ -19,6 +20,9 @@ public class BidService {
 
     @Autowired
     ItemService item;
+
+    @Autowired
+    ItemRepository itemRepo;
 
     @Autowired
     UserService user;
@@ -32,6 +36,14 @@ public class BidService {
     public boolean postBid(Bid bid){
         boolean flag = false;
         try {
+            Random random = new Random();
+            int choice = random.nextInt(10000);
+            String done = Integer.toString(choice);
+            bid.setId(done);
+            bid.setStatus("pending");
+           Item yourItem = item.findOwnerItem(bid.getOwner(), bid.getItem());
+           yourItem.setPrice(bid.getAmount());
+           itemRepo.save(yourItem);
             repo.insert(bid);
             flag = true;
         }
@@ -99,7 +111,6 @@ public class BidService {
 
     public ArrayList findAcceptedBidsByBidder(String username, String status) {
         //returns all pending bids by user
-//        System.out.println(username+status+"inside bid service");
         ArrayList<Bid> pendingBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
         //need to check if the item is still being sold
 //        for(int i =0 ; i < pendingBidsByUser.size(); i++){
@@ -108,4 +119,6 @@ public class BidService {
         return pendingBidsByUser;
 
     }
+
+
 }

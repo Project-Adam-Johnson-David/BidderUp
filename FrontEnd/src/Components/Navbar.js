@@ -18,7 +18,8 @@ function Navbar(props){
               <li><Link to="/Account">View Balance</Link></li>
               <li><Link to="/Bids">Bids</Link></li>
               <li><Link to="/PostNewItem">Post New Item</Link></li>
-              <li><Link to="/MyPendingBids">My Pending Bids</Link></li>
+              <li><Link to="/UpdateProfile">Update Profile</Link></li>
+              <li><Link to="/MyAcceptedBids">My Accepted Bids</Link></li>
                <li><Link to="/" onClick={clear}>Log Out</Link></li>
           </ul>
           <br></br>
