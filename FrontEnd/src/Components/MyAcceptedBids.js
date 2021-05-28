@@ -4,6 +4,7 @@ import axios from "axios";
 import {NotificationManager} from "react-notifications";
 
 function MyAcceptedBids(props){
+
     const [bids, setBids] = useState([]);
     const [symbol, setSymbol]= useState("");
     const [query, setQuery]= useState("*");
@@ -79,12 +80,15 @@ function MyAcceptedBids(props){
         await axios({
             method: 'get',
             url: `http://localhost:8080/bid/accepted/${username}/${query}`,
+
             headers : {
                 'Content-Type': 'application/json'
             }
         }).then(res => {
+
             console.log(res.data);
             res.data.forEach(x => {x.amount = round((x.amount*exchangeCoeff),2);console.log(x.amount+"this is the new price")})
+
             setBids(res.data);
         })
             .catch(err => alert(err));
@@ -95,12 +99,14 @@ function MyAcceptedBids(props){
             <Navbar goHome={props.goHome} goAccount={props.goAccount} goPayments={props.goPayments}
                     goViewBalance={props.goViewBalance} username={props.username} logOut={props.logOut}/>
 
+
             <div className="accepted-filter">
                 <input type="text" onChange={(e)=>{setQuery(e.target.value)}}/>
                 <button onClick={searchData}>Search</button>
             </div>
 
             <div className="view-pending-bids">
+
                 <div>
                     {bids.map(b => {
                         return(
@@ -110,6 +116,7 @@ function MyAcceptedBids(props){
                                     <p>Item: {b.item}</p>
                                     <p>Bidder: {b.bidder}</p>
                                     <p>Price: {symbol} {b.amount}</p>
+
                                     <p>Date submitted: {b.date}</p>
                                 </div>
                             </div>
