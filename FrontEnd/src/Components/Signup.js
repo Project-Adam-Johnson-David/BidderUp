@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom'
 
 function Signup(props){
     const [username, setUsername] = useState("");
+    const [email, setEmail]= useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     const [country, setCountry] = useState("");
@@ -27,7 +28,7 @@ function Signup(props){
             await axios({
                 method: 'post',
                 url: "http://localhost:8080/user/signup",
-                data: { username, password, id, country, balance},
+                data: { username, password, id, country, balance, email},
                 // params:{username, password},
                 headers : {
                     'Content-Type': 'application/json'
@@ -53,6 +54,8 @@ function Signup(props){
                 <h3>Sign up</h3>
                 <label>Username</label>
                 <input type="text" onChange={e=>setUsername(e.target.value)}/>
+                <label>Email</label>
+                <input type="email" onChange={e=>setEmail(e.target.value)}/>
                 <label>Password</label>
                 <input type="password" onChange={e=>setPassword1(e.target.value)}/>
                 <label>Re-enter Password</label>
