@@ -53,11 +53,23 @@ public class BidService {
         return flag;
     }
 
+    /**
+     * find a bid by the bid owner
+     * @param owner
+     * @return ArrayList list
+     */
     public ArrayList<Bid> findBidByOwner(String owner){
         ArrayList<Bid> list = repo.findBidByOwner(owner);
         return list;
     }
 
+    /**
+     * Service method that filters out bids of an owner
+     * and removes denied bids from the list of bids
+     * @param owner
+     * @param item
+     * @return ArrayList of bids
+     */
     public ArrayList<Bid> findBidByItem(String owner, String item){
         try {
             ArrayList<Bid> bids = repo.findBidByItem(item);
@@ -94,6 +106,13 @@ public class BidService {
        }
     }
 
+    /**
+     * Finds pending bids of a user by status
+     * and by username
+     * @param username
+     * @param status
+     * @return ArrayList of bids
+     */
     public ArrayList findAcceptedBidsByBidder(String username, String status) {
         //returns all pending bids by user
         ArrayList<Bid> pendingBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
