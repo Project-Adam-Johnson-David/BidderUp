@@ -62,18 +62,12 @@ public class BidService {
         try {
             ArrayList<Bid> bids = repo.findBidByItem(item);
             for(int i = 0; i < bids.size(); i++){
-                if(!owner.equals(bids.get(i).getOwner())){
-                    bids.remove(i);
+                if(!owner.equals(bids.get(i).getOwner())){ bids.remove(i);
                 }
-                else if(bids.get(i).getStatus().equals("deny")){
-                    bids.remove(i);
+                else if(bids.get(i).getStatus().equals("deny")){ bids.remove(i);
                 }
             }
-            return bids;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
+            return bids; } catch (Exception e){ e.printStackTrace();return null;
         }
     }
 
@@ -86,26 +80,17 @@ public class BidService {
      * @return boolean flag
      */
     public String setBidStatus(String id, String status){
-       String flag = "pending";
-        try {
-           Bid bid = repo.findBidById(id);
+        String flag = "pending";
+        try { Bid bid = repo.findBidById(id);if (bid != null) { repo.delete(bid);
+            bid.setStatus(status);
+            repo.insert(bid);
 
-           if (bid != null) {
-               repo.delete(bid);
-               bid.setStatus(status);
-               repo.insert(bid);
-
-               if(status.equals("accept")){
-                   item.changeItemStatus(bid.getItem(), bid.getOwner());
-                   user.exchangeCurrency(bid.getOwner(), bid.getBidder(), bid.getAmount());
-                   flag = status;
-               }
-           }
-           return flag;
-       }
-       catch (Exception e){
-           e.printStackTrace();
-           return flag;
+           if(status.equals("accept")){
+               item.changeItemStatus(bid.getItem(), bid.getOwner());
+               user.exchangeCurrency(bid.getOwner(), bid.getBidder(), bid.getAmount());
+               flag = status; }
+            }return flag; }
+        catch (Exception e){ e.printStackTrace();return flag;
        }
     }
 

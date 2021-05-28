@@ -97,20 +97,16 @@ public class ItemService {
 
     public boolean changeItemStatus(String title, String owner) {
         boolean flag = false;
-        try {
-            Item item = new Item();
-            List<Item> items = repo.findItemByOwner(owner);
+        try { Item item = new Item();List<Item> items = repo.findItemByOwner(owner);
 
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).getTitle().equals(title)) {
-                    item = items.get(i);
-                } }
+                    item = items.get(i); } }
             if (item != null) {
                 item.setAccepted(true);
                 repo.save(item);//should set the item
                 flag = true; }
         }
-        catch(Exception exception){ exception.printStackTrace(); }
-        return flag; }
+        catch(Exception exception){ exception.printStackTrace(); }return flag; }
 
 }

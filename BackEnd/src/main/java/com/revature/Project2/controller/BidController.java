@@ -64,7 +64,4 @@ public class BidController {
 
     @PostMapping(value="/bid_status/{value}")
     public String bidStatus(@RequestBody String id, @PathVariable("value") String status){
-        return service.setBidStatus(id, status);
-    }
-
-}
+        return service.setBidStatus(id, status); }}

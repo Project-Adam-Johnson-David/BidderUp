@@ -55,7 +55,7 @@ public class ItemConTest {
         List<Item> list = controller.getOwnerItems("owner");
         Assert.notEmpty(list, "list isn't empty");
     }
-
+//
     @Test
     public void browseItemsTest() {
         try {
