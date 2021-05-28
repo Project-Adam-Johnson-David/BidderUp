@@ -1,23 +1,28 @@
 package com.revature.Project2.controller;
 
 import com.revature.Project2.pojo.Bid;
+import com.revature.Project2.repository.BidRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.event.annotation.BeforeTestExecution;
 import org.springframework.test.context.event.annotation.BeforeTestMethod;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 class BidContTest {
 
     @Autowired
     BidController controller;
+    @Autowired
+    BidRepository repository;
 
     @Test
     public void getBidsTest(){
@@ -25,6 +30,12 @@ class BidContTest {
 
         List<Bid> bids = controller.getBids();
         Assert.noNullElements(bids, "not null");
+    }
+
+    @Test
+    public void getItemBidsTest(){
+       ArrayList<Bid> list = controller.getItemBids("owner", "item");
+       Assert.noNullElements(list, "No elements should be null");
     }
 
     @Test
@@ -36,10 +47,25 @@ class BidContTest {
     }
 
     @Test
+    public void getAcceptedBidsTest(){
+        ArrayList<Bid> list = controller.getAcceptedBids("username");
+        Assert.noNullElements(list, "No null elements");
+    }
+    @Test
     public void postBidTest(){
         Date testDate = new Date();
-        Bid bid = new Bid(null, "owner","item", "bidder", 0, testDate);
+        Bid bid = new Bid(null, "owner","item", "bidder", 0, testDate, "pending");
         boolean flag = controller.postBid(bid);
 //        Assert.isTrue(flag, "flag is true");
+    }
+
+    @Test
+    public void bidStatusTest(){
+        Bid bid = new Bid("0", "item", "owner", "bidder", 0, new Date(), "pending");
+        boolean post = controller.postBid(bid);
+        repository.insert(bid);
+        String stat = controller.bidStatus("0", "accept");
+        Assert.isTrue(stat.equalsIgnoreCase("accept" ), "Strings should be equal");
+        repository.delete(bid);
     }
 }

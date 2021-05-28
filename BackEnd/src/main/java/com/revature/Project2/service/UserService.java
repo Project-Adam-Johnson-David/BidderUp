@@ -21,7 +21,13 @@ public class UserService {
      * @return List<User> list
      */
     public List<User> findAllUsers(){
-        return userRepo.findAll();
+        try{
+            return userRepo.findAll();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
