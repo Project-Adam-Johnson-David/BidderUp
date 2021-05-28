@@ -14,11 +14,11 @@ function UpdateProfile() {
         country: country
     }
 
-    async function postUpdate(path) {
+    async function postUpdate(path, updatedInfo) {
 
-        await axios.post(path, user)
+        await axios.post(path,  null, {params: {updatedInfo, username}})
             .then(response => {
-                NotificationManager.success('Successful', 'Successfully Updated Profile!');
+                NotificationManager.success('Successfully Updated Profile!');
             })
             .catch(error => {
                 console.log(error)
@@ -31,19 +31,16 @@ function UpdateProfile() {
         e.preventDefault()
         setUsername(newUsername)
         console.log(newUsername)
+        postUpdate("http://localhost:8080/user/update_username", newUsername)
         sessionStorage.setItem('username', newUsername)
-        NotificationManager.success('Successful', 'Successfully Updated Profile!');
-        //postUpdate("http://localhost:8080/user/update_username")
     }
 
     const handleUpdateCountry = (e) => {
         e.preventDefault()
         setCountry(newCountry)
         console.log(newCountry)
+        postUpdate("http://localhost:8080/user/update_country", newCountry)
         sessionStorage.setItem('country', newCountry)
-        //NotificationManager.success('Successful', 'Successfully Updated Profile!');
-        NotificationManager.success('Success')
-        //postUpdate("http://localhost:8080/user/update_country")
     }
 
     return (
@@ -56,7 +53,7 @@ function UpdateProfile() {
                 </form> 
                 <form onSubmit={handleUpdateCountry}>
                     <h3>Country: {country}</h3>
-                <select onChange={e=>setCountry(e.target.value)}>
+                <select onChange={e=>setNewCountry(e.target.value)}>
                     <option value=""></option>
                     <option value="USA">USA</option>
                     <option value="United Kingdom">United Kingdom</option>
