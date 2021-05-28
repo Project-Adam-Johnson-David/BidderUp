@@ -2,12 +2,14 @@ package com.revature.Project2.service;
 
 import com.revature.Project2.pojo.User;
 import com.revature.Project2.repository.UserRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.apache.logging.log4j.LogManager;
 import java.util.List;
 
 @Service
+@Log4j2
 public class UserService {
 
     @Autowired
@@ -80,7 +82,9 @@ public class UserService {
 
     public boolean userCanWithdraw(double withdrawal, String username) {
         User user = findUser(username);
-        return (user.getBalance() - withdrawal < 0); }
+        if (user.getBalance() - withdrawal < 0) return false;
+        return true;
+    }
 
     public double findBalance(String username) {
         User user= findUser(username);
@@ -93,22 +97,17 @@ public class UserService {
      * @param amount
      * @return boolean flag
      */
-    public boolean exchangeCurrency(String owner, String bidder, double amount){
-        boolean flag = false;
-        try{
+    public void exchangeCurrency(String owner, String bidder, double amount){
             //Users
             User userOwner = userRepo.findUserByUsername(owner);
             User userBidder = userRepo.findUserByUsername(bidder);
-            //User money
-            double ownerMoney = userOwner.getBalance(); double bidderMoney = userBidder.getBalance();
-            //Increment by bid amount
-            ownerMoney+= amount; bidderMoney-=amount;
+
             //set the new balance of each user
-            userOwner.setBalance(ownerMoney); userBidder.setBalance(bidderMoney);
+            userOwner.setBalance(userOwner.getBalance()+amount);
+            userBidder.setBalance(userBidder.getBalance()-amount);
             //Save the changes to the Users
             userRepo.save(userOwner); userRepo.save(userBidder);
             //return true
-            flag = true; } catch(Exception e){ e.printStackTrace(); }return flag;
     }
 
     public void updateUsernameForUser(String newUsername, String username) {
