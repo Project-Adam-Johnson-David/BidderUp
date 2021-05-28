@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {NotificationManager} from "react-notifications";
 
-function MyPendingBids(props){
+function MyAcceptedBids(props){
 
     React.useEffect(()=>{
         searchData();
@@ -58,4 +58,4 @@ function MyPendingBids(props){
         </div>
     );
 }
-export default MyPendingBids;
+export default MyAcceptedBids;
