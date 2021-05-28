@@ -66,18 +66,21 @@ class BidContTest {
     @Test
     public void bidStatusTest(){
         try{
-            Item item = new Item(null, "item", 0, "owner", 0, "none", false);
-            itemRepo.insert(item);
-            Bid bid = new Bid("69", "item", "owner", "bidder", 0, new Date(), "pending");
-            boolean post = controller.postBid(bid);
-            repository.insert(bid);
-            String stat = controller.bidStatus("0", "accept");
-            Assert.isTrue(stat.equalsIgnoreCase("accept" ), "Strings should be equal");
-            repository.delete(bid);
-            itemRepo.delete(item);
+        Item item = new Item(null, "item", 0, "owner", 0, "none", false);
+        itemRepo.insert(item);
+        Bid bid = new Bid("69", "item", "owner", "bidder", 0, new Date(), "pending");
+        boolean post = controller.postBid(bid);
+        repository.insert(bid);
+        String stat = controller.bidStatus("0", "accept");
+        Assert.isTrue(stat.equalsIgnoreCase("accept" ), "Strings should be equal");
+        repository.delete(bid);
+        itemRepo.delete(item);
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
+
+
 }

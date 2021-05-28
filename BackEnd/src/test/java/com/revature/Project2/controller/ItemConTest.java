@@ -1,6 +1,7 @@
 package com.revature.Project2.controller;
 
 import com.revature.Project2.pojo.Item;
+import com.revature.Project2.repository.ItemRepository;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -16,6 +18,9 @@ import java.util.List;
 public class ItemConTest {
     @Autowired
     ItemController controller;
+
+    @Autowired
+    ItemRepository repository;
 
     /**
      * postItemTest() will run first because of
@@ -50,4 +55,36 @@ public class ItemConTest {
         List<Item> list = controller.getOwnerItems("owner");
         Assert.notEmpty(list, "list isn't empty");
     }
+
+    @Test
+    public void browseItemsTest() {
+        try {
+            Item item = new Item(null, "item", 0, "owner",
+                    0, "none", false);
+            repository.insert(item);
+            ArrayList<Item> list = controller.
+                    browseItems("item", "owner");
+            Assert.noNullElements(list, "No null elements");
+            repository.delete(item);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void findAcceptedItemsTest(){
+        try {
+            Item item = new Item(null, "item", 0, "owner",
+                    0, "none", true);
+            repository.insert(item);
+            List<Item> list = controller.getAcceptedItems(item.getOwner());
+            Assert.noNullElements(list, "No null element");
+            repository.delete(item);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
+
+

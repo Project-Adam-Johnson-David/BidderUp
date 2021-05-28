@@ -65,12 +65,10 @@ public class UserController {
 
     @PostMapping("/update_username")
     public void updateUsername(@RequestParam String updatedInfo, @RequestParam String username) {
-        service.updateUsernameForUser(updatedInfo, username);
-    }
+        service.updateUsernameForUser(updatedInfo, username); }
 
     @PostMapping("/update_country")
     public void updateCountry(@RequestParam String updatedInfo, @RequestParam String username) {
-        service.updateCountryForUser(updatedInfo, username);
-    }
+        service.updateCountryForUser(updatedInfo, username); }
 
 }
