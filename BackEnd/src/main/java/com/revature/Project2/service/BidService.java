@@ -111,7 +111,6 @@ public class BidService {
 
     public ArrayList findAcceptedBidsByBidder(String username, String status) {
         //returns all pending bids by user
-//        System.out.println(username+status+"inside bid service");
         ArrayList<Bid> pendingBidsByUser = repo.findBidsByBidderAndStatusEquals(username, status);
         //need to check if the item is still being sold
 //        for(int i =0 ; i < pendingBidsByUser.size(); i++){

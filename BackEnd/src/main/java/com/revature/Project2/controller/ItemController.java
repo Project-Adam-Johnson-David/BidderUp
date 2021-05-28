@@ -61,7 +61,6 @@ public class ItemController {
 
     @GetMapping("/browse/{query}/{username}")
     public ArrayList<Item> browseItems(@PathVariable("query") String query, @PathVariable("username") String username){
-        System.out.println(username+"was here ");
         ArrayList data= new ArrayList();
         try{
             data= service.findItems(query, username);

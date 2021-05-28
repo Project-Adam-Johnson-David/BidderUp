@@ -75,6 +75,7 @@ class BidContTest {
         Assert.isTrue(stat.equalsIgnoreCase("accept" ), "Strings should be equal");
         repository.delete(bid);
         itemRepo.delete(item);
+
         }
         catch (Exception e){
             e.printStackTrace();
