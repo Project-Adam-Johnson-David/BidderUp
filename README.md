@@ -44,6 +44,8 @@ The functionalities of the frontend will not work if http://localhost:3000/ is n
 ```npm start``` 
 
 ## To run the backend
+```gradle clean```
+```gralde build```
 Run the main method in Project2Application
 
 ## Contributors
