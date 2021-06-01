@@ -36,7 +36,7 @@ To get this application setup:
 If the requirements are met, go ahead and clone the repo by using the command below:
 ```https://github.com/Project-Adam-Johnson-David/Project2```
 
-Once the repository is cloned you will need to make sure the localhost mongodb server is running.
+Once the repository is cloned you will need to make sure the localhost:8080 and mongodb is running.
 The functionalities of the frontend will not work if http://localhost:3000/ is not running. THe backend is running at port 8080.
 
 ## To run frontend program with npm
